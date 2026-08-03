@@ -1,14 +1,13 @@
 from datetime import timedelta
 import random
 from django.utils import timezone
-from django.conf import settings
-from django.core.mail import send_mail
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import User
+from .emails import send_otp_email, OTP_VALIDITY_MINUTES
 from .serializers import (
     RegisterSerializer,
     OTPVerifySerializer,
@@ -30,10 +29,10 @@ class RegisterView(APIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         user.otp_code = generate_otp()
-        user.otp_expires_at = timezone.now() + timedelta(minutes=15)
+        user.otp_expires_at = timezone.now() + timedelta(minutes=OTP_VALIDITY_MINUTES)
         user.save()
         try:
-            send_mail("Your TO-AAS verification code", f"Your verification code is {user.otp_code}. It expires in 15 minutes.", settings.DEFAULT_FROM_EMAIL, [user.email], fail_silently=False)
+            send_otp_email(user)
         except Exception:
             # Development fallback: allows registration when SMTP is deliberately not configured.
             print(f"OTP for {user.email}: {user.otp_code}")

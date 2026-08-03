@@ -1,8 +1,19 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import RegexValidator
 from django.db import models
 
 
+class MatricNumberValidator(RegexValidator):
+    regex = r'^[\w.@+\-/]+$'
+    message = 'Enter a valid matric number. It may contain letters, numbers, and /.-@+_ characters.'
+
+
 class User(AbstractUser):
+    username = models.CharField(
+        max_length=150,
+        unique=True,
+        validators=[MatricNumberValidator()],
+    )
     PROGRAMME_CHOICES = [
         ("computer_science", "B.Sc. Computer Science"),
         ("software_engineering", "B.Sc. Software Engineering"),
