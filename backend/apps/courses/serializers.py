@@ -20,6 +20,8 @@ class CourseSerializer(serializers.ModelSerializer):
             "major_topics",
             "recommended_references",
             "department_classification",
+            "is_compulsory",
+            "is_active",
             "metadata",
             "abstract_reasoning",
             "logical_reasoning",

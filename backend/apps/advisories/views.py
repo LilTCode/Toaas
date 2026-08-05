@@ -2,10 +2,10 @@ import json
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.db.models import Q
 from django.utils.timezone import now
 from apps.accounts.models import User
 from apps.courses.models import Course, TranscriptEntry
+from .engine import build_plan, compute_cgpa, compute_mastery, profile_from_mastery
 from .models import CognitiveProfile, Recommendation, Activity, AdvisorMessage, MessageReply
 from .serializers import (
     CognitiveProfileSerializer, RecommendationSerializer, ActivitySerializer,
@@ -28,27 +28,13 @@ def log_activity(student, action, detail=""):
 
 
 def build_cognitive_profile_from_transcript(student):
-    transcript_entries = TranscriptEntry.objects.filter(student=student).select_related("course")
-    if not transcript_entries.exists():
-        return {d: 0 for d in COGNITIVE_DIMENSIONS}
+    """Relative-strength profile (percentages summing to 100) from the transcript.
 
-    weighted_score = {d: 0 for d in COGNITIVE_DIMENSIONS}
-    total_weight = 0
-
-    for entry in transcript_entries:
-        course = entry.course
-        if entry.status != "passed":
-            continue
-        grade_weight = {"A": 1.0, "B": 0.8, "C": 0.6, "D": 0.4, "E": 0.2}.get(entry.grade.upper(), 0.5)
-        contribution = max(1, course.credit_units) * grade_weight
-        total_weight += contribution
-        for dim in COGNITIVE_DIMENSIONS:
-            weighted_score[dim] += contribution * (getattr(course, dim) / 100)
-
-    if total_weight == 0:
-        return {d: 0 for d in COGNITIVE_DIMENSIONS}
-
-    return {dim: round(weighted_score[dim] / total_weight * 100, 1) for dim in COGNITIVE_DIMENSIONS}
+    Delegates to the advisory engine so the persisted profile, the transcript
+    recalculation, and the recommendation plan all describe the same student.
+    """
+    mastery, _evidence, _confidence = compute_mastery(student)
+    return profile_from_mastery(mastery)
 
 
 def recalculate_cognitive_profile(student):
@@ -58,189 +44,6 @@ def recalculate_cognitive_profile(student):
         setattr(profile, dim, profile_data[dim])
     profile.save()
     return profile_data
-
-
-def build_course_recommendations(student):
-    """
-    Greedy optimisation with Learned Helplessness balancing.
-    1. Carryover courses get highest priority.
-    2. If multiple carryover courses belong to the student's weakest cognitive dimensions,
-       distribute them: only recommend a portion now, defer the rest to future semesters.
-    3. Fill remaining units with courses matching the student's strongest dimensions.
-    4. Respect 15-24 credit unit policy.
-    5. Only recommend courses from the student's own programme and level.
-    """
-    profile_data = recalculate_cognitive_profile(student)
-
-    # Identify weakest dimensions (bottom 2)
-    sorted_dims = sorted(COGNITIVE_DIMENSIONS, key=lambda d: profile_data.get(d, 0))
-    weakest_dim = sorted_dims[0]
-    second_weakest = sorted_dims[1]
-
-    # Identify strongest dimensions (top 2)
-    strongest_dim = sorted_dims[-1]
-    second_strongest = sorted_dims[-2]
-
-    # Get programme name for filtering
-    programme = student.get_programme_display().replace("B.Sc. ", "")
-    current_level = student.current_level
-    current_semester = student.current_semester
-
-    # Gather eligible courses — current level (both semesters) + carryovers from previous levels
-    # Try current semester first, then fall back to entire level to ensure 15-unit minimum
-    level_courses = Course.objects.filter(
-        level=current_level,
-        department_classification__in=[programme, "Computer Science", "General"],
-    )
-    carryover_entries = TranscriptEntry.objects.filter(
-        student=student, status__in=["failed", "carryover"]
-    ).select_related("course")
-
-    course_pool = {}
-    for c in level_courses:
-        course_pool[c.id] = c
-    for entry in carryover_entries:
-        course_pool[entry.course_id] = entry.course
-
-    # Remove already-passed courses and prerequisites not met
-    eligible = []
-    for course in course_pool.values():
-        if TranscriptEntry.objects.filter(student=student, course=course, status="passed").exists():
-            continue
-        prereqs = course.prerequisites.all()
-        if prereqs.exists() and any(
-            not TranscriptEntry.objects.filter(student=student, course=p, status="passed").exists()
-            for p in prereqs
-        ):
-            continue
-        is_co = TranscriptEntry.objects.filter(
-            student=student, course=course, status__in=["failed", "carryover"]
-        ).exists()
-        eligible.append((course, is_co))
-
-    # Score each course by cognitive fit
-    scored = []
-    for course, is_co in eligible:
-        diff = sum(abs(profile_data.get(d, 0) - getattr(course, d, 0)) for d in COGNITIVE_DIMENSIONS) / 5
-        # Compute course's dominant cognitive dimension
-        course_dims = {d: getattr(course, d, 0) for d in COGNITIVE_DIMENSIONS}
-        dominant_dim = max(course_dims, key=course_dims.get)
-        scored.append({
-            "course": course,
-            "carryover": is_co,
-            "difference": diff,
-            "compatibility": max(0, round(100 - diff)),
-            "dominant_dim": dominant_dim,
-            "dim_value": course_dims[dominant_dim],
-        })
-
-    # Separate carryover and new courses
-    carryover_scored = [s for s in scored if s["carryover"]]
-    new_scored = [s for s in scored if not s["carryover"]]
-
-    # Learned Helplessness: group carryovers by dominant dimension
-    co_by_dim = {}
-    for s in carryover_scored:
-        co_by_dim.setdefault(s["dominant_dim"], []).append(s)
-
-    # For weakest dimensions, only take a fraction now
-    def cap_dim_carryovers(dim, items, max_per_dim=3):
-        if dim in (weakest_dim, second_weakest):
-            return items[:min(len(items), max_per_dim)]
-        return items
-
-    selected_carryovers = []
-    for dim, items in co_by_dim.items():
-        items.sort(key=lambda x: x["difference"])
-        capped = cap_dim_carryovers(dim, items)
-        selected_carryovers.extend(capped)
-        # Remaining items become deferred
-        remaining = [s for s in items if s not in capped]
-        # We still store them in rule_snapshot as deferred but don't include in current plan
-
-    # Sort carryovers: best fit first
-    selected_carryovers.sort(key=lambda x: x["difference"])
-
-    # Build the final list
-    ranked = []
-    total_units = 0
-
-    # Add carryover courses first
-    for s in selected_carryovers:
-        c = s["course"]
-        if total_units + c.credit_units > 24:
-            continue
-        total_units += c.credit_units
-        explanation = (
-            f"Carryover prioritised — {c.code} was previously incomplete. "
-            f"This course strengthens your {s['dominant_dim'].replace('_', ' ')} skills "
-            f"which align with your academic development plan."
-        )
-        ranked.append({
-            "id": c.id,
-            "code": c.code,
-            "title": c.title,
-            "credit_units": c.credit_units,
-            "level": c.level,
-            "semester": c.semester,
-            "description": c.description,
-            "compatibility": s["compatibility"],
-            "carryover": True,
-            "explanation": explanation,
-            "cognitive_dims": {d: getattr(c, d, 0) for d in COGNITIVE_DIMENSIONS},
-        })
-
-    # Add new courses — prefer strongest dimensions
-    new_scored.sort(key=lambda x: (x["dominant_dim"] in (weakest_dim, second_weakest), x["difference"]))
-    for s in new_scored:
-        if total_units + s["course"].credit_units > 24:
-            continue
-        c = s["course"]
-        total_units += c.credit_units
-        explanation = (
-            f"This course complements your strong {s['dominant_dim'].replace('_', ' ')} abilities "
-            f"({profile_data.get(s['dominant_dim'], 0):.1f}% proficiency). "
-            f"Compatibility with your cognitive profile is {s['compatibility']}%."
-        )
-        ranked.append({
-            "id": c.id,
-            "code": c.code,
-            "title": c.title,
-            "credit_units": c.credit_units,
-            "level": c.level,
-            "semester": c.semester,
-            "description": c.description,
-            "compatibility": s["compatibility"],
-            "carryover": False,
-            "explanation": explanation,
-            "cognitive_dims": {d: getattr(c, d, 0) for d in COGNITIVE_DIMENSIONS},
-        })
-
-    # Deferred carryovers (for future semesters)
-    deferred = []
-    for dim, items in co_by_dim.items():
-        items.sort(key=lambda x: x["difference"])
-        already_selected_ids = {s["course"].id for s in selected_carryovers}
-        for s in items:
-            if s["course"].id not in already_selected_ids:
-                deferred.append({
-                    "id": s["course"].id,
-                    "code": s["course"].code,
-                    "title": s["course"].title,
-                    "credit_units": s["course"].credit_units,
-                    "dominant_dim": s["dominant_dim"],
-                    "cognitive_dims": {d: getattr(s["course"], d, 0) for d in COGNITIVE_DIMENSIONS},
-                })
-
-    return {
-        "courses": ranked,
-        "total_units": total_units,
-        "deferred_courses": deferred,
-        "profile": profile_data,
-        "sorted_dims": sorted_dims,
-        "weakest_dim": weakest_dim,
-        "second_weakest": second_weakest,
-    }
 
 
 class CognitiveProfileView(APIView):
@@ -256,49 +59,51 @@ class GenerateRecommendationView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
-        result = build_course_recommendations(request.user)
-        profile_data = result["profile"]
-        recommendations = result["courses"]
-        deferred = result["deferred_courses"]
-        sorted_dims = result["sorted_dims"]
-        weakest_dim = result["weakest_dim"]
-        second_weakest = result["second_weakest"]
+        student = request.user
+        plan = build_plan(student)
 
-        profile, _ = CognitiveProfile.objects.get_or_create(student=request.user)
+        profile_data = plan["profile"]
+        recommendations = plan["courses"]
+        deferred = plan["deferred_courses"]
+        total_units = plan["total_units"]
+
+        # Persist the engine's profile (sums to 100%) so the profile endpoint,
+        # charts, and the plan all describe the same student.
+        profile, _ = CognitiveProfile.objects.get_or_create(student=student)
         for dim in COGNITIVE_DIMENSIONS:
-            setattr(profile, dim, profile_data[dim])
+            setattr(profile, dim, profile_data.get(dim, 0))
         profile.save()
 
-        explanation_parts = [
-            f"Your cognitive profile shows strength in {sorted_dims[-1].replace('_', ' ')} ({profile_data.get(sorted_dims[-1], 0):.1f}%) "
-            f"and {sorted_dims[-2].replace('_', ' ')} ({profile_data.get(sorted_dims[-2], 0):.1f}%)."
-        ]
-        if deferred:
-            explanation_parts.append(
-                f"To avoid overwhelming your weaker areas ({weakest_dim.replace('_', ' ')}, {second_weakest.replace('_', ' ')}), "
-                f"{len(deferred)} carryover course(s) have been deferred to future semesters."
-            )
-
         recommendation = Recommendation.objects.create(
-            student=request.user,
-            explanation=" ".join(explanation_parts),
+            student=student,
+            explanation=plan["explanation"],
             rule_snapshot={
                 "profile": profile_data,
+                "mastery": plan["mastery"],
                 "courses": recommendations,
                 "deferred_courses": deferred,
-                "total_units": result["total_units"],
+                "total_units": total_units,
                 "course_count": len(recommendations),
+                "min_units": plan["min_units"],
+                "max_units": plan["max_units"],
+                "meets_policy": plan["meets_policy"],
+                "warnings": plan["warnings"],
+                "helplessness": plan["helplessness"],
+                "failure_counts": plan["failure_counts"],
+                "evidence": plan["evidence"],
+                "cognitive_load": plan["cognitive_load"],
+                "strain_budgets": plan["strain_budgets"],
+                "next_cycle": plan["next_cycle"],
             },
             review_status="pending_review",
         )
         course_ids = [item["id"] for item in recommendations]
         if course_ids:
             recommendation.selected_courses.set(Course.objects.filter(id__in=course_ids))
-        recommendation.save(update_fields=["rule_snapshot"])
 
         log_activity(
             request.user, "Recommendation generated",
-            f"{len(recommendations)} courses, {result['total_units']} units"
+            f"{len(recommendations)} courses, {total_units} units"
         )
         serializer = RecommendationSerializer(recommendation)
         return Response(serializer.data)
@@ -317,7 +122,15 @@ class RecommendationAcknowledgeView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, recommendation_id):
-        recommendation = Recommendation.objects.get(id=recommendation_id, student=request.user)
+        try:
+            recommendation = Recommendation.objects.get(
+                id=recommendation_id, student=request.user
+            )
+        except Recommendation.DoesNotExist:
+            return Response(
+                {"detail": "Recommendation not found."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
         recommendation.student_acknowledged = True
         recommendation.student_note = request.data.get("student_note", "")
         recommendation.save(update_fields=["student_acknowledged", "student_note"])
@@ -581,11 +394,7 @@ class AdvisorStudentListView(APIView):
             profile, _ = CognitiveProfile.objects.get_or_create(student=s)
             transcript = TranscriptEntry.objects.filter(student=s)
             total = transcript.count()
-            grade_points = sum(
-                {"A": 5, "B": 4, "C": 3, "D": 2, "E": 1, "F": 0}.get(e.grade.upper(), 0)
-                for e in transcript if e.grade
-            )
-            cgpa = round(grade_points / total, 2) if total > 0 else 0.0
+            cgpa = compute_cgpa(s)
 
             data.append({
                 "id": s.id,
@@ -623,11 +432,7 @@ class AdvisorStudentDetailView(APIView):
         profile, _ = CognitiveProfile.objects.get_or_create(student=student)
         transcript = TranscriptEntry.objects.filter(student=student).select_related("course")
         total = transcript.count()
-        grade_points = sum(
-            {"A": 5, "B": 4, "C": 3, "D": 2, "E": 1, "F": 0}.get(e.grade.upper(), 0)
-            for e in transcript if e.grade
-        )
-        cgpa = round(grade_points / total, 2) if total > 0 else 0.0
+        cgpa = compute_cgpa(student)
 
         # Carryover courses
         carryovers = transcript.filter(status__in=["failed", "carryover"])

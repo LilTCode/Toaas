@@ -3,7 +3,8 @@ from django.utils import timezone
 from apps.accounts.models import User
 from apps.courses.models import Course, TranscriptEntry
 from apps.advisories.models import CognitiveProfile, Activity, AdvisorMessage, MessageReply
-from apps.advisories.views import recalculate_cognitive_profile, build_course_recommendations
+from apps.advisories.views import recalculate_cognitive_profile
+from apps.advisories.engine import build_plan
 from apps.chatbot.models import ChatConversation, ChatMessage
 from apps.advisories.models import Recommendation
 
@@ -114,45 +115,58 @@ class Command(BaseCommand):
         self.stdout.write("Cleared existing transcript, profiles, recommendations, and activities.")
 
         # ── Seed transcript entries for Alex ─────────────────
-        # Alex: strong in practical, weak in calculation (MTH/PHY got D/E — passed but weak)
+        # Alex (Software Engineering, 200L S1): full 100-level year completed.
+        # Strong in practical work, weak in calculation (MTH/PHY got D — passed but weak).
         alex_entries = [
-            ("GST101", "A", "passed", "First"), ("GST102", "A", "passed", "First"),
+            ("GST101", "A", "passed", "First"), ("GST103", "A", "passed", "First"),
+            ("CSC101", "A", "passed", "First"), ("CSC103", "B", "passed", "First"),
             ("MTH101", "C", "passed", "First"), ("PHY101", "C", "passed", "First"),
-            ("CSC101", "A", "passed", "First"), ("SEN101", "A", "passed", "First"),
+            ("STA101", "C", "passed", "First"), ("SEN101", "A", "passed", "First"),
             ("CYB101", "B", "passed", "First"),
-            ("GST111", "A", "passed", "Second"), ("MTH102", "D", "passed", "Second"),
-            ("PHY102", "D", "passed", "Second"), ("CSC102", "A", "passed", "Second"),
-            ("SEN102", "A", "passed", "Second"), ("CYB102", "B", "passed", "Second"),
+            ("GST102", "A", "passed", "Second"), ("GST104", "A", "passed", "Second"),
+            ("CSC102", "A", "passed", "Second"), ("CSC104", "B", "passed", "Second"),
+            ("MTH102", "D", "passed", "Second"), ("PHY102", "D", "passed", "Second"),
+            ("STA102", "D", "passed", "Second"), ("SEN102", "A", "passed", "Second"),
+            ("CYB102", "B", "passed", "Second"),
         ]
         self._seed_transcript(alex, alex_entries)
 
-        # ── Seed transcript for Sarah ────────────────────
+        # Sarah (Cyber Security, 300L S1): 100 and 200 level completed, strong throughout.
         sarah_entries = [
-            ("GST101", "A", "passed", "First"), ("GST102", "B", "passed", "First"),
+            ("GST101", "A", "passed", "First"), ("GST103", "B", "passed", "First"),
+            ("CSC101", "A", "passed", "First"), ("CSC103", "A", "passed", "First"),
             ("MTH101", "B", "passed", "First"), ("PHY101", "B", "passed", "First"),
-            ("CSC101", "A", "passed", "First"), ("CYB101", "A", "passed", "First"),
-            ("GST111", "A", "passed", "Second"), ("MTH102", "C", "passed", "Second"),
-            ("PHY102", "C", "passed", "Second"), ("CSC102", "B", "passed", "Second"),
-            ("CYB102", "A", "passed", "Second"),
-            ("CSC201", "A", "passed", "First"), ("CSC202", "B", "passed", "First"),
-            ("CSC203", "B", "passed", "First"), ("CYB201", "A", "passed", "First"),
-            ("MTH201", "C", "passed", "First"),
-            ("CSC211", "A", "passed", "Second"), ("CSC212", "B", "passed", "Second"),
-            ("CSC213", "A", "passed", "Second"), ("CYB211", "B", "passed", "Second"),
-            ("GST212", "A", "passed", "Second"),
+            ("STA101", "B", "passed", "First"), ("CYB101", "A", "passed", "First"),
+            ("GST102", "B", "passed", "Second"), ("GST104", "A", "passed", "Second"),
+            ("CSC102", "B", "passed", "Second"), ("CSC104", "A", "passed", "Second"),
+            ("MTH102", "C", "passed", "Second"), ("PHY102", "C", "passed", "Second"),
+            ("STA102", "B", "passed", "Second"), ("CYB102", "A", "passed", "Second"),
+            ("GST201", "A", "passed", "First"), ("GST203", "B", "passed", "First"),
+            ("CSC201", "A", "passed", "First"), ("CSC203", "B", "passed", "First"),
+            ("CSC205", "B", "passed", "First"), ("MTH201", "C", "passed", "First"),
+            ("MTH203", "B", "passed", "First"), ("CYB201", "A", "passed", "First"),
+            ("CYB203", "B", "passed", "First"),
+            ("GST202", "A", "passed", "Second"), ("GST204", "A", "passed", "Second"),
+            ("CSC202", "A", "passed", "Second"), ("CSC204", "A", "passed", "Second"),
+            ("CSC206", "B", "passed", "Second"), ("MTH202", "C", "passed", "Second"),
+            ("MTH204", "C", "passed", "Second"), ("CYB202", "A", "passed", "Second"),
+            ("CYB204", "A", "passed", "Second"),
         ]
         self._seed_transcript(sarah, sarah_entries)
 
-        # ── Seed transcript for James (carryovers are truly failed F-grade courses) ──
-        # D and E are passed but weak; only F-grades become carryover
+        # James (Computer Science, repeating 200L S1): weak throughout, two carryovers.
+        # D and E are passed but weak; only F grades become carryovers.
         james_entries = [
-            ("GST101", "B", "passed", "First"), ("GST102", "C", "passed", "First"),
+            ("GST101", "B", "passed", "First"), ("GST103", "C", "passed", "First"),
+            ("CSC101", "C", "passed", "First"), ("CSC103", "D", "passed", "First"),
             ("MTH101", "D", "passed", "First"), ("PHY101", "D", "passed", "First"),
-            ("CSC101", "C", "passed", "First"),
-            ("GST111", "B", "passed", "Second"), ("MTH102", "E", "passed", "Second"),
-            ("PHY102", "E", "passed", "Second"), ("CSC102", "C", "passed", "Second"),
-            ("CSC201", "C", "passed", "First"), ("CSC202", "D", "passed", "First"),
-            ("CSC203", "C", "passed", "First"), ("MTH201", "F", "carryover", "First"),
+            ("STA101", "E", "passed", "First"),
+            ("GST102", "C", "passed", "Second"), ("GST104", "B", "passed", "Second"),
+            ("CSC102", "C", "passed", "Second"), ("CSC104", "D", "passed", "Second"),
+            ("MTH102", "E", "passed", "Second"), ("PHY102", "E", "passed", "Second"),
+            ("STA102", "E", "passed", "Second"),
+            ("MTH203", "D", "passed", "First"),
+            ("MTH201", "F", "carryover", "First"), ("CSC201", "F", "carryover", "First"),
         ]
         self._seed_transcript(james, james_entries)
 
@@ -166,23 +180,24 @@ class Command(BaseCommand):
 
         # ── Generate recommendations for each student ──────
         for student in [alex, sarah, james]:
-            result = build_course_recommendations(student)
+            result = build_plan(student)
             rec = Recommendation.objects.create(
                 student=student,
-                explanation=f"Demo recommendation for {student.first_name}",
+                explanation=result["explanation"],
                 rule_snapshot={
-                    "profile": result["profile"],
+                    "profile": result["mastery"],
                     "courses": result["courses"],
                     "deferred_courses": result["deferred_courses"],
                     "total_units": result["total_units"],
                     "course_count": len(result["courses"]),
+                    "meets_policy": result["meets_policy"],
                 },
             )
             course_ids = [c["id"] for c in result["courses"]]
             if course_ids:
                 rec.selected_courses.set(Course.objects.filter(id__in=course_ids))
             rec.save()
-            self.stdout.write(f"  {student.first_name}: {len(result['courses'])} recommended, {len(result['deferred_courses'])} deferred")
+            self.stdout.write(f"  {student.first_name}: {len(result['courses'])} recommended, {len(result['deferred_courses'])} deferred, {result['total_units']} units")
 
         # ── Seed activities ────────────────────────────────
         for student in [alex, sarah, james]:

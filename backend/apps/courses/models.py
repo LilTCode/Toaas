@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+import re
 
 
 class Course(models.Model):
@@ -19,6 +20,13 @@ class Course(models.Model):
     department_classification = models.CharField(max_length=128, default="Computer Science")
     metadata = models.JSONField(blank=True, null=True)
 
+    # Compulsory courses cannot be quietly dropped from a plan — when the engine
+    # has to defer one it raises a warning for advisor sign-off instead.
+    is_compulsory = models.BooleanField(default=True)
+    # Retired courses stay in the table for historical transcripts but are never
+    # recommended again.
+    is_active = models.BooleanField(default=True)
+
     abstract_reasoning = models.PositiveSmallIntegerField(default=0)
     logical_reasoning = models.PositiveSmallIntegerField(default=0)
     theoretical_knowledge = models.PositiveSmallIntegerField(default=0)
@@ -34,10 +42,43 @@ class Course(models.Model):
             + self.practical_application
         )
 
+    @staticmethod
+    def semester_from_code(code):
+        """Semester implied by the course code, per university numbering policy.
+
+        The last digit of the course number carries the semester: odd numbers are
+        first-semester courses, even numbers are second-semester ones — CSC201 is
+        taught in first semester, CSC202 in second. Returns ``None`` when the code
+        has no digits to read.
+        """
+        match = re.search(r"(\d+)", code or "")
+        if not match:
+            return None
+        return 1 if int(match.group(1)[-1]) % 2 == 1 else 2
+
     def clean(self):
         from django.core.exceptions import ValidationError
         if self.cognitive_total() != 100:
             raise ValidationError("Cognitive demand percentages must total 100%.")
+
+        implied = self.semester_from_code(self.code)
+        if implied is not None and self.semester != implied:
+            raise ValidationError(
+                f"{self.code} ends in "
+                f"{'an odd' if implied == 1 else 'an even'} digit, so it is a "
+                f"{'first' if implied == 1 else 'second'}-semester course, but "
+                f"semester {self.semester} was given. Renumber the course or fix "
+                f"the semester."
+            )
+
+    def save(self, *args, **kwargs):
+        # Derive the semester from the code so every write path agrees — bulk
+        # importers call create()/save() directly and bypass ModelForm validation.
+        implied = self.semester_from_code(self.code)
+        if implied is not None:
+            self.semester = implied
+        self.clean()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.code} - {self.title}"

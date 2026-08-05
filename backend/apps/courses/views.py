@@ -2,6 +2,7 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
+from django.core.exceptions import ValidationError
 from .models import Course, TranscriptEntry
 from .serializers import CourseSerializer, TranscriptEntrySerializer
 from apps.advisories.models import Activity
@@ -103,22 +104,30 @@ class CourseViewSet(viewsets.ModelViewSet):
             learning_objectives = data.get("learning_objectives", "")
             profile = classify_course(title, description, major_topics, learning_objectives)
 
-            course = Course.objects.create(
-                code=code,
-                title=title,
-                credit_units=cu,
-                level=lvl,
-                semester=sem,
-                department_classification=data.get("department_classification", request.data.get("default_programme", "Computer Science")),
-                description=description,
-                major_topics=major_topics,
-                learning_objectives=learning_objectives,
-                abstract_reasoning=profile["abstract_reasoning"],
-                logical_reasoning=profile["logical_reasoning"],
-                theoretical_knowledge=profile["theoretical_knowledge"],
-                quantitative_calculation=profile["quantitative_calculation"],
-                practical_application=profile["practical_application"],
-            )
+            compulsory_raw = str(data.get("is_compulsory", "")).strip().lower()
+            is_compulsory = compulsory_raw not in ("false", "no", "0", "elective")
+
+            try:
+                course = Course.objects.create(
+                    code=code,
+                    title=title,
+                    credit_units=cu,
+                    level=lvl,
+                    semester=sem,
+                    department_classification=data.get("department_classification", request.data.get("default_programme", "Computer Science")),
+                    description=description,
+                    major_topics=major_topics,
+                    learning_objectives=learning_objectives,
+                    is_compulsory=is_compulsory,
+                    abstract_reasoning=profile["abstract_reasoning"],
+                    logical_reasoning=profile["logical_reasoning"],
+                    theoretical_knowledge=profile["theoretical_knowledge"],
+                    quantitative_calculation=profile["quantitative_calculation"],
+                    practical_application=profile["practical_application"],
+                )
+            except ValidationError as exc:
+                errors.append(f"Row {idx}: {'; '.join(exc.messages)}")
+                continue
             created.append({
                 "code": course.code,
                 "title": course.title,

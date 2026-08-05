@@ -46,14 +46,6 @@ const printDimLabels = {
   practical_application: "Practical\nApplication",
 };
 
-function recalcCompatibility(cognitive, course) {
-  if (!cognitive || !course?.cognitive_dims) return null;
-  const dims = Object.keys(course.cognitive_dims);
-  if (!dims.length) return null;
-  const diff = dims.reduce((s, d) => s + Math.abs((cognitive[d] || 0) - (course.cognitive_dims[d] || 0)), 0) / dims.length;
-  return Math.max(0, Math.round(100 - diff));
-}
-
 function generateProfileInsight(cognitive) {
   if (!cognitive) return null;
   const DIM_LABELS_SHORT = { abstract_reasoning: "Abstract", logical_reasoning: "Logical", theoretical_knowledge: "Theoretical", quantitative_calculation: "Quantitative", practical_application: "Practical" };
@@ -497,6 +489,11 @@ ${deferred.length > 0 ? `
 
   const courses = plan?.rule_snapshot?.courses || plan?.selected_courses || [];
   const deferred = plan?.rule_snapshot?.deferred_courses || [];
+  const warnings = plan?.rule_snapshot?.warnings || [];
+  const nextCycle = plan?.rule_snapshot?.next_cycle || null;
+  const deferredTarget = nextCycle?.session
+    ? `${nextCycle.session}, semester ${nextCycle.semester}`
+    : null;
   if (loading) return <p className="text-sm font-bold text-gray-500">Loading recommendations…</p>;
 
   const statusLabel = plan?.review_status === "accepted" ? "Accepted" : "Pending Review";
@@ -564,6 +561,20 @@ ${deferred.length > 0 ? `
             </div>
           </section>
 
+          {/* Policy / risk warnings raised by the engine */}
+          {warnings.length > 0 && (
+            <section className="rounded-3xl border-[3px] border-black bg-amber-50 p-5 shadow-[6px_6px_0_0_#000]">
+              <h2 className="text-sm font-black uppercase tracking-wide text-amber-900">
+                Needs Advisor Attention
+              </h2>
+              <ul className="mt-2 space-y-1.5">
+                {warnings.map((w, i) => (
+                  <li key={i} className="text-xs font-bold leading-5 text-amber-900">• {w}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {/* Cognitive profile for context */}
           {cognitive && (
             <section className="rounded-3xl border-[3px] border-black bg-white p-5 shadow-[8px_8px_0_0_#000]">
@@ -602,8 +613,7 @@ ${deferred.length > 0 ? `
                   </div>
                    <div className="text-right">
                     {(() => {
-                      const liveCompat = recalcCompatibility(cognitive, c);
-                      const displayCompat = liveCompat ?? c.compatibility;
+                      const displayCompat = c.compatibility;
                       const compatColor = displayCompat >= 70 ? "text-green-700" : displayCompat >= 50 ? "text-amber-700" : "text-red-700";
                       return <p className={`text-xl font-black ${compatColor}`}>{displayCompat ?? "—"}%</p>;
                     })()}
@@ -637,21 +647,26 @@ ${deferred.length > 0 ? `
               <div className="border-b-[3px] border-black bg-amber-50 px-6 py-4">
                 <h2 className="text-lg font-black text-amber-800">Deferred to Future Semesters</h2>
                 <p className="mt-1 text-sm font-bold text-amber-700">
-                  {deferred.length} carryover course(s) deferred to avoid overwhelming your weaker cognitive areas.
-                  You will focus on them in subsequent semesters.
+                  {deferred.length} course(s) held back so this semester stays manageable.
+                  {deferredTarget && ` They are planned for ${deferredTarget}.`}
                 </p>
               </div>
               <div className="divide-y-[2px] divide-black">
                 {deferred.map((c) => (
-                  <article className="flex items-center gap-4 p-4" key={c.id}>
+                  <article className="flex items-start gap-4 p-4" key={c.id}>
                     <div className="grid h-10 w-14 shrink-0 place-items-center rounded-xl border-[2px] border-black bg-amber-100 text-xs font-black text-amber-800 shadow-[2px_2px_0_0_#000]">
                       {c.code}
                     </div>
                     <div className="min-w-0 flex-1">
                       <h3 className="font-black text-black">{c.title}</h3>
                       <p className="mt-0.5 text-xs font-bold text-gray-500">
-                        {c.credit_units} units · {c.dominant_dim ? `Focus: ${c.dominant_dim.replace(/_/g, " ")}` : ""}
+                        {c.credit_units} units
+                        {c.dominant_dim ? ` · Focus: ${c.dominant_dim.replace(/_/g, " ")}` : ""}
+                        {c.deferred_to_session ? ` · Planned for ${c.deferred_to_session}, semester ${c.deferred_to_semester}` : ""}
                       </p>
+                      {c.explanation && (
+                        <p className="mt-1.5 text-xs font-bold leading-5 text-amber-800">{c.explanation}</p>
+                      )}
                     </div>
                   </article>
                 ))}
