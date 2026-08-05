@@ -1,0 +1,8 @@
+{
+  "buildCommand": "python manage.py migrate --noinput",
+  "functions": {
+    "backend/wsgi.py": {
+      "maxDuration": 60
+    }
+  }
+}
