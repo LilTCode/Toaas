@@ -1,0 +1,3324 @@
+[
+{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$HaTd1mnLBuQTx0uZ9gqrP5$Z9Zd+knGId/WsEoPKa3tIpmxit95HhrYfyXLnnFburs=",
+    "last_login": "2026-08-06T14:45:41.160Z",
+    "is_superuser": true,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-06T14:44:30.224Z",
+    "username": "125/22/1/0085",
+    "role": "student",
+    "email": "olasemilore78@gmail.com",
+    "is_email_verified": false,
+    "otp_code": null,
+    "otp_expires_at": null,
+    "programme": "software_engineering",
+    "current_level": 100,
+    "current_semester": 1,
+    "session": "2025/2026",
+    "advisor": null,
+    "profile_photo": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$mtCGLhZx8XdzIr4CB6EJG7$Tb826kUUoquJUwtAizETeQn3l1Qzh/spyWfP7pvxkm4=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Testimony",
+    "last_name": "Ola",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-06T15:01:22.628Z",
+    "username": "125/22/1/0083",
+    "role": "student",
+    "email": "olatestimony22@gmail.com",
+    "is_email_verified": true,
+    "otp_code": null,
+    "otp_expires_at": null,
+    "programme": "software_engineering",
+    "current_level": 300,
+    "current_semester": 1,
+    "session": "2025/2026",
+    "advisor": null,
+    "profile_photo": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 1,
+  "fields": {
+    "code": "GST111",
+    "title": "Communication in English",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 100,
+    "description": "Sound patterns in English. Word classes and sentence structure. Grammar and usage. Logical and critical thinking and reasoning methods. Writing activities, comprehension strategies, public speaking and report writing.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 5,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 40,
+    "quantitative_calculation": 0,
+    "practical_application": 35,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 2,
+  "fields": {
+    "code": "MTH101",
+    "title": "Elementary Mathematics I (Algebra and Trigonometry)",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 100,
+    "description": "Elementary set theory, Venn diagrams. Real numbers, mathematical induction, sequences and series, quadratic equations, binomial theorem. Complex numbers and the Argand diagram. De-Moivre's theorem. Circular measure and trigonometric functions.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 45,
+    "practical_application": 5,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 3,
+  "fields": {
+    "code": "PHY101",
+    "title": "General Physics I (Mechanics)",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 100,
+    "description": "Space and time, units and dimensions. Vectors and scalars. Kinematics and Newton's laws of motion. Conservation principles. Rotational motion, torque and angular momentum. Moments of inertia. Gravitation and satellite motion.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 10,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 25,
+    "quantitative_calculation": 40,
+    "practical_application": 10,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 4,
+  "fields": {
+    "code": "PHY107",
+    "title": "General Practical Physics I",
+    "credit_units": 1,
+    "semester": 1,
+    "level": 100,
+    "description": "Quantitative measurement, treatment of measurement errors and graphical analysis. Experiments on meters, the oscilloscope, mechanical and electrical resonant systems, light, heat and viscosity.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 5,
+    "logical_reasoning": 10,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 30,
+    "practical_application": 40,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 5,
+  "fields": {
+    "code": "STA111",
+    "title": "Descriptive Statistics",
+    "credit_units": 3,
+    "semester": 1,
+    "level": 100,
+    "description": "Statistical data: types, sources and methods of collection. Presentation of data in tables, charts and graphs. Frequency and cumulative distributions. Measures of location, partition, dispersion, skewness and kurtosis. Rates, ratios and index numbers.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 10,
+    "logical_reasoning": 10,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 55,
+    "practical_application": 10,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 6,
+  "fields": {
+    "code": "COS101",
+    "title": "Introduction to Computing Sciences",
+    "credit_units": 3,
+    "semester": 1,
+    "level": 100,
+    "description": "History of computing. Basic components of a computing device, input/output devices and peripherals. Hardware, software and humanware. Information processing and its role in society. The Internet and its impact. Areas of the computing discipline and job specialisations.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 10,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 35,
+    "quantitative_calculation": 5,
+    "practical_application": 35,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 7,
+  "fields": {
+    "code": "SUN-ICT101",
+    "title": "Introduction to Artificial Intelligence & Machine Learning",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 100,
+    "description": "Definition and types of AI: rule-based systems, decision trees, neural networks. Machine learning algorithms: supervised, unsupervised and reinforcement learning. Model evaluation metrics. Ethics and social implications of AI including bias, privacy and job displacement.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 30,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 25,
+    "quantitative_calculation": 15,
+    "practical_application": 10,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 8,
+  "fields": {
+    "code": "SUN-ICT103",
+    "title": "Clean and Renewable Energy Systems",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 100,
+    "description": "Fundamentals of electricity, generation, transmission and distribution. Renewable and clean energy systems. Solar energy for homes and off-grid installation. Smart solar energy systems and smart meters. Sustainable management of solar energy systems and the smart grid.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 10,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 35,
+    "quantitative_calculation": 20,
+    "practical_application": 20,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 9,
+  "fields": {
+    "code": "GST112",
+    "title": "Nigerian Peoples and Culture",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 100,
+    "description": "Nigerian history, culture and art up to 1800. Nigeria under colonial rule and its evolution as a political unit. Challenges of nation building. Concept of trade and economics of self-reliance. Social justice and national development. Norms, values and re-orientation strategies.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 10,
+    "theoretical_knowledge": 60,
+    "quantitative_calculation": 0,
+    "practical_application": 15,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 10,
+  "fields": {
+    "code": "MTH102",
+    "title": "Elementary Mathematics II (Calculus)",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 100,
+    "description": "Function of a real variable, graphs, limits and continuity. The derivative as limit of rate of change. Techniques of differentiation. Extreme curve sketching. Integration as the inverse of differentiation, methods of integration, definite integrals and application to areas and volumes.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 10,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 55,
+    "practical_application": 5,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 11,
+  "fields": {
+    "code": "PHY102",
+    "title": "General Physics II (Electricity and Magnetism)",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 100,
+    "description": "Electrostatics, Coulomb's law and superposition. Electric field, potential and Gauss's law. Capacitance and dielectrics. DC circuits and Ohm's law. Magnetic fields, Lorentz force, Biot-Savart and Ampere's laws. Electromagnetic induction, Faraday and Lenz's laws. Maxwell's equations.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 10,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 25,
+    "quantitative_calculation": 40,
+    "practical_application": 10,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 12,
+  "fields": {
+    "code": "PHY108",
+    "title": "General Practical Physics II",
+    "credit_units": 1,
+    "semester": 2,
+    "level": 100,
+    "description": "Continuation of PHY107, covering the practical aspect of the second-semester theoretical courses with emphasis on quantitative measurement, treatment of measurement errors, graphical analysis and the preparation of practical reports.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 5,
+    "logical_reasoning": 10,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 30,
+    "practical_application": 40,
+    "prerequisites": [
+      4
+    ]
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 13,
+  "fields": {
+    "code": "COS102",
+    "title": "Introduction to Problem Solving",
+    "credit_units": 3,
+    "semester": 2,
+    "level": 100,
+    "description": "Core concepts of computing. Identification and types of problems. Algorithms and heuristics. Solvable and unsolvable problems. Solution techniques: abstraction, analogy, brainstorming, hypothesis testing, reduction, means-end analysis, divide and conquer. Flowcharts, pseudocode, decision tables and trees. Programming in C or Python.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 25,
+    "logical_reasoning": 35,
+    "theoretical_knowledge": 10,
+    "quantitative_calculation": 10,
+    "practical_application": 20,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 14,
+  "fields": {
+    "code": "SUN-ICT102",
+    "title": "Current Trends in Artificial Intelligence & Machine Learning",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 100,
+    "description": "Current trends and applications of AI and ML across business, finance, transportation, mass communication, education and the sciences. Practical applications and case studies. Evaluation and limitations of AI and ML systems. Careers in AI and related fields.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 25,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 35,
+    "quantitative_calculation": 15,
+    "practical_application": 10,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 15,
+  "fields": {
+    "code": "SUN-SFE104",
+    "title": "Software Development and Advancement",
+    "credit_units": 1,
+    "semester": 2,
+    "level": 100,
+    "description": "Modern software development methodologies and the software development life cycle. Programming languages, IDEs and version control systems. Agile and DevOps practices. Web and mobile application development. Data management, security, cloud computing and microservices.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 10,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 20,
+    "quantitative_calculation": 0,
+    "practical_application": 55,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 16,
+  "fields": {
+    "code": "ENT211",
+    "title": "Entrepreneurship and Innovation",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 200,
+    "description": "Concept and theories of entrepreneurship and intrapreneurship. Characteristics of entrepreneurs. Entrepreneurial thinking. Innovation and its dimensions. Enterprise formation, partnership and networking. Contemporary entrepreneurship issues in Nigeria. Basic principles of e-commerce.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 40,
+    "quantitative_calculation": 10,
+    "practical_application": 20,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 17,
+  "fields": {
+    "code": "MTH201",
+    "title": "Mathematical Methods I",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 200,
+    "description": "Real-valued functions of a real variable. Review of differentiation and integration. Mean value theorem and Taylor series. Real-valued functions of two and three variables. Partial derivatives, chain rule, extrema, Lagrangian multipliers. Evaluation of line integrals and multiple integrals.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 10,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 50,
+    "practical_application": 5,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 18,
+  "fields": {
+    "code": "COS201",
+    "title": "Computer Programming I",
+    "credit_units": 3,
+    "semester": 1,
+    "level": 200,
+    "description": "Essentials of computer programming and types of programming. Structured programming principles. Basic data types, variables, expressions and operators. Object-oriented concepts: abstraction, objects, classes, methods, parameter passing and encapsulation. Searching, sorting and recursive algorithms. Event-driven programming and exception handling.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 30,
+    "theoretical_knowledge": 10,
+    "quantitative_calculation": 5,
+    "practical_application": 35,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 19,
+  "fields": {
+    "code": "SEN201",
+    "title": "Introduction to Software Engineering",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 200,
+    "description": "Software engineering concepts and principles. Software processes: lifecycle and process models, process assessment and metrics. Software requirements and specification. Software design, architecture and validation. Software evolution, maintenance and reuse. Software project management. Software engineering and law.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 35,
+    "quantitative_calculation": 5,
+    "practical_application": 20,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 20,
+  "fields": {
+    "code": "CSC203",
+    "title": "Discrete Structures",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 200,
+    "description": "Propositional and predicate logic. Sets, functions, sequences and summation. Proof techniques and mathematical induction. Inclusion-exclusion and pigeonhole principles. Permutations and combinations. The binomial theorem. Discrete probability and recurrence relations.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 30,
+    "logical_reasoning": 35,
+    "theoretical_knowledge": 10,
+    "quantitative_calculation": 20,
+    "practical_application": 5,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 21,
+  "fields": {
+    "code": "IFT211",
+    "title": "Digital Logic Design",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 200,
+    "description": "Information representation and number systems. Boolean algebra and switching theory. Minimisation of Boolean functions. Physical properties of gates. Combinational circuit design using multiplexers, decoders, comparators and adders. Sequential circuit analysis, flip-flops, registers, counters, RAMs, ROMs, PLAs, PLDs and FPGAs.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 35,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 20,
+    "practical_application": 10,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 22,
+  "fields": {
+    "code": "SUN-ICT201",
+    "title": "History, Heritage and Story Telling",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 200,
+    "description": "History, heritage and their role in shaping cultural identity and values. The impact of colonialism, imperialism and globalisation. Forms of storytelling and their relationship with memory. Techniques for effective storytelling and ethical considerations. Multimedia and infographic content generation.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 10,
+    "theoretical_knowledge": 55,
+    "quantitative_calculation": 0,
+    "practical_application": 20,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 23,
+  "fields": {
+    "code": "SUN-SFE203",
+    "title": "Frontend Technology I",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 200,
+    "description": "Fundamentals of web design principles and user experience. HTML tags, attributes and forms with input validation. CSS selectors, layout, responsive design and pre-processors. Vanilla JavaScript and DOM manipulation. Bootstrap, Foundation and Materialize. Debugging, accessibility and performance. Version control with Git and GitHub.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "E"
+    },
+    "is_compulsory": false,
+    "is_active": true,
+    "abstract_reasoning": 5,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 10,
+    "quantitative_calculation": 0,
+    "practical_application": 70,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 24,
+  "fields": {
+    "code": "GST212",
+    "title": "Philosophy, Logic and Human Existence",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 200,
+    "description": "Scope, branches and problems of philosophy. Logic as an indispensable tool of philosophy. Elements of syllogism and symbolic logic — the first nine rules of inference. Informal fallacies and laws of thought. Valid and invalid arguments, deduction, induction and inference. Creative and critical thinking.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 30,
+    "logical_reasoning": 40,
+    "theoretical_knowledge": 25,
+    "quantitative_calculation": 0,
+    "practical_application": 5,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 25,
+  "fields": {
+    "code": "MTH202",
+    "title": "Mathematical Methods II",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 200,
+    "description": "Derivation of differential equations from primitives, geometry and physics. Order and degree of differential equations. Techniques for solving first and second order linear and non-linear equations. Solutions of systems of first order linear equations. Finite linear difference equations.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 10,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 55,
+    "practical_application": 5,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 26,
+  "fields": {
+    "code": "COS202",
+    "title": "Computer Programming II",
+    "credit_units": 3,
+    "semester": 2,
+    "level": 200,
+    "description": "Advanced object-oriented programming: polymorphism, abstract classes and interfaces. Class hierarchies and programme organisation using packages. Use of API iterators, List, Stack and Queue. Searching, sorting and recursive algorithms. Event-driven programming and exception handling. Applications in Graphical User Interface programming.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 25,
+    "logical_reasoning": 25,
+    "theoretical_knowledge": 10,
+    "quantitative_calculation": 5,
+    "practical_application": 35,
+    "prerequisites": [
+      18
+    ]
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 27,
+  "fields": {
+    "code": "INS204",
+    "title": "Systems Analysis and Design",
+    "credit_units": 3,
+    "semester": 2,
+    "level": 200,
+    "description": "Structured approach to analysis and design of information systems. Software development life cycle. Top-down and bottom-up design. Dataflow diagramming and entity relationship modelling. Computer aided software engineering. Prototyping design and validation. File and database design. Design of user interfaces.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 25,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 5,
+    "practical_application": 35,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 28,
+  "fields": {
+    "code": "IFT212",
+    "title": "Computer Architecture and Organisation",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 200,
+    "description": "Instruction formats and types. Memory and I/O instructions, dataflow, arithmetic and flow control instructions. Addressing modes, stack operations and interrupts. Data path and control unit design. RTL, microprogramming and hardwired control. Assembly language programming. Memory hierarchy, cache and virtual memory.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 30,
+    "theoretical_knowledge": 25,
+    "quantitative_calculation": 15,
+    "practical_application": 15,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 29,
+  "fields": {
+    "code": "SUN-ICT202",
+    "title": "Islam and Global Citizenship",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 200,
+    "description": "The Islamic perspective on global citizenship and cultural/religious intelligence. Islamic values and principles in relation to contemporary global issues. Intercultural communication and collaboration. Religious diversity and social justice. Communication and leadership in a diverse and global context.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 55,
+    "quantitative_calculation": 0,
+    "practical_application": 15,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 30,
+  "fields": {
+    "code": "SUN-SFE204",
+    "title": "Backend Technology I",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 200,
+    "description": "Advanced HTML and CSS with semantic markup and accessibility best practices. CSS animation and effects. Advanced JavaScript: closures, prototypes and asynchronous programming. Single-page applications with Angular, React or Vue.js. REST APIs, status codes and data formats. Build systems, testing automation and deployment.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "E"
+    },
+    "is_compulsory": false,
+    "is_active": true,
+    "abstract_reasoning": 10,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 10,
+    "quantitative_calculation": 5,
+    "practical_application": 55,
+    "prerequisites": [
+      23
+    ]
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 31,
+  "fields": {
+    "code": "SEN299",
+    "title": "Students Industrial Work Experience Scheme I",
+    "credit_units": 3,
+    "semester": 1,
+    "level": 200,
+    "description": "Three-month industrial attachment to a private or public organisation during the second-year long vacation, to acquire practical experience across all areas of Software Engineering. Students keep monitored records and submit and defend a report on the experience gained.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "siwes_long_vacation",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 5,
+    "logical_reasoning": 10,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 0,
+    "practical_application": 70,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 32,
+  "fields": {
+    "code": "SEN301",
+    "title": "Object-Oriented Analysis and Design",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 300,
+    "description": "Object-oriented approach to information system development. Importance and principles of modelling. Conceptual model of the Unified Modelling Language (UML), architecture and the software development life cycle. Use case, activity, class, state chart, component and deployment diagrams. UML-based CASE tools.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 35,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 0,
+    "practical_application": 30,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 33,
+  "fields": {
+    "code": "CSC301",
+    "title": "Data Structures",
+    "credit_units": 3,
+    "semester": 1,
+    "level": 300,
+    "description": "Primitive types, arrays, records, strings and string processing. Data representation in memory. Stack and heap allocation. Queues and trees, and implementation strategies for them. Run-time storage management. Pointers, references and linked structures. Algorithm efficiency using big-O notation.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 30,
+    "logical_reasoning": 30,
+    "theoretical_knowledge": 10,
+    "quantitative_calculation": 15,
+    "practical_application": 15,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 34,
+  "fields": {
+    "code": "SUN-ICT301",
+    "title": "Acadopreneurship",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 300,
+    "description": "Transforming academic ideas and research outputs into startups. Theory of acadopreneurship. Ideation and business planning, intellectual property protection and technology transfer. Entrepreneurial marketing, sales, finance and investment. The business model canvas. Implementation, scaling, and legal and ethical issues.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 40,
+    "quantitative_calculation": 10,
+    "practical_application": 20,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 35,
+  "fields": {
+    "code": "SUN-ICT303",
+    "title": "Family Skills for 21st Century Learners",
+    "credit_units": 1,
+    "semester": 1,
+    "level": 300,
+    "description": "The concept of family and its role in personal and social development. Dimensions of family life: relationships, communication and conflict resolution. Principles and practices of effective leadership: vision, strategy, motivation, decision-making, delegation and team-building. Leadership styles and their impact.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 10,
+    "logical_reasoning": 10,
+    "theoretical_knowledge": 55,
+    "quantitative_calculation": 0,
+    "practical_application": 25,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 36,
+  "fields": {
+    "code": "SUN-SFE305",
+    "title": "Programming with Python I",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 300,
+    "description": "History of Python and configuring the development environment. Basic data types and structures. Control structures. Functions, modules and packages. Object-oriented programming in Python: classes, encapsulation, inheritance and polymorphism. File handling and I/O. Error handling, assertions, unit tests and test-driven development.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "E"
+    },
+    "is_compulsory": false,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 25,
+    "theoretical_knowledge": 10,
+    "quantitative_calculation": 5,
+    "practical_application": 45,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 37,
+  "fields": {
+    "code": "SUN-SFE307",
+    "title": "Data Management I",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 300,
+    "description": "Information management concepts: storage, retrieval, capture and representation. Analysis and indexing, information privacy, integrity and security. Introduction to database systems and DBMS functions. Database architecture and data independence. Relational and semi-structured data models. Database design, query processing, concurrency and recovery.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "E"
+    },
+    "is_compulsory": false,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 25,
+    "quantitative_calculation": 5,
+    "practical_application": 30,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 38,
+  "fields": {
+    "code": "GST312",
+    "title": "Peace and Conflict Resolution",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 300,
+    "description": "Concepts of peace, conflict and security in a multi-ethnic nation. Types and theories of conflict. Root causes of conflict and violence in Africa. Peace building and management of conflict. Justice and legal frameworks. Insurgency and terrorism. Alternative dispute resolution. Roles of international organisations in conflict resolution.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 45,
+    "quantitative_calculation": 0,
+    "practical_application": 15,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 39,
+  "fields": {
+    "code": "ENT312",
+    "title": "Venture Creation",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 300,
+    "description": "Opportunity identification and environmental scanning. New business development and market research. Entrepreneurial finance: venture capital, equity finance and microfinance. Entrepreneurial marketing and e-commerce. Small and family business management. Negotiation and business communication. Technological solutions and digital business strategies.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 30,
+    "quantitative_calculation": 15,
+    "practical_application": 25,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 40,
+  "fields": {
+    "code": "SEN304",
+    "title": "Software Testing and Quality Assurance",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 300,
+    "description": "The importance of software testing. Verification and validation and the need for a culture of quality. Avoidance of errors and other quality problems. Inspections and reviews. Process assurance versus product assurance. Quality process standards. Statistical approaches to quality control. Unit, integration, system, performance, load, stress and security testing.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 10,
+    "logical_reasoning": 30,
+    "theoretical_knowledge": 20,
+    "quantitative_calculation": 10,
+    "practical_application": 30,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 41,
+  "fields": {
+    "code": "SEN306",
+    "title": "Software Construction",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 300,
+    "description": "Definition and importance of software construction. Key construction decisions including choice of programming language. Design in construction, design heuristics and abstract data types. Working classes and high quality routines. The pseudo-code programming process. Types of statements. Developer testing, debugging and software craftsmanship.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 25,
+    "theoretical_knowledge": 10,
+    "quantitative_calculation": 5,
+    "practical_application": 45,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 42,
+  "fields": {
+    "code": "SEN322",
+    "title": "Software Engineering Innovation and New Technology",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 300,
+    "description": "The software entrepreneurial process and principles of software business ownership. Identifying software market opportunities. Entrepreneurial software marketing. Business communication and negotiation techniques. Feasibility analysis and entrepreneurial financing. Legal issues. Software business plan development and risk management.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 35,
+    "quantitative_calculation": 10,
+    "practical_application": 25,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 43,
+  "fields": {
+    "code": "CSC308",
+    "title": "Operating Systems",
+    "credit_units": 3,
+    "semester": 2,
+    "level": 300,
+    "description": "Fundamentals of operating system design and implementation. History, evolution and types of operating systems. Operating system structures. Process management: processes, threads, CPU scheduling and process synchronisation. Memory management and virtual memory. File systems and I/O systems. Security, protection and distributed systems.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 30,
+    "theoretical_knowledge": 30,
+    "quantitative_calculation": 10,
+    "practical_application": 10,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 44,
+  "fields": {
+    "code": "SUN-ICT302",
+    "title": "Basic Financial Literacy",
+    "credit_units": 1,
+    "semester": 2,
+    "level": 300,
+    "description": "Needs and wants and how to prioritise them. Managing money and keeping records; household versus business assets. Financial planning and budgeting. Savings options and savings plans. Borrowing: benefits, costs, risks and loan structuring. Forms of investment and monitoring. Financial fraud and scams and how to protect against them.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 5,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 35,
+    "quantitative_calculation": 30,
+    "practical_application": 15,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 45,
+  "fields": {
+    "code": "SUN-ICT304",
+    "title": "Leadership in the 21st Century for Scientist",
+    "credit_units": 1,
+    "semester": 2,
+    "level": 300,
+    "description": "Defining leadership and distinguishing it from management. Trait, behavioural, contingency, transformational and servant leadership theories. Leadership in a global context. Leadership communication. Emotional intelligence and self-awareness. Leadership ethics and values. Leading change. Team building and collaboration. Women in leadership.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 50,
+    "quantitative_calculation": 0,
+    "practical_application": 20,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 46,
+  "fields": {
+    "code": "SUN-SFE306",
+    "title": "Programming with Python II",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 300,
+    "description": "Advanced data structures and algorithms with time and space complexity analysis. Web development with Flask and Django, HTTP handling and RESTful APIs. Database programming and ORM frameworks. Concurrency and parallelism: threading, multiprocessing and asyncio. Data analysis with NumPy, Pandas and Matplotlib. Machine learning with scikit-learn and TensorFlow.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "E"
+    },
+    "is_compulsory": false,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 25,
+    "theoretical_knowledge": 10,
+    "quantitative_calculation": 15,
+    "practical_application": 30,
+    "prerequisites": [
+      36
+    ]
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 47,
+  "fields": {
+    "code": "SUN-SFE308",
+    "title": "Mobile Application Technology",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 300,
+    "description": "Mobile application development for iOS and Android. Mobile user interface design and platform conventions. Working with device capabilities and remote APIs. Local storage and offline behaviour. Packaging, distribution and maintenance of mobile applications.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "E"
+    },
+    "is_compulsory": false,
+    "is_active": true,
+    "abstract_reasoning": 5,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 10,
+    "quantitative_calculation": 0,
+    "practical_application": 70,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 48,
+  "fields": {
+    "code": "SEN399",
+    "title": "Students Industrial Work Experience Scheme II",
+    "credit_units": 3,
+    "semester": 1,
+    "level": 300,
+    "description": "Three-month industrial attachment during the third-year long vacation, building additional practical experience across all areas of Software Engineering over and above SEN299. Students keep monitored records and submit and defend a report on the experience gained.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "siwes_long_vacation",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 5,
+    "logical_reasoning": 10,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 0,
+    "practical_application": 70,
+    "prerequisites": [
+      31
+    ]
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 49,
+  "fields": {
+    "code": "COS409",
+    "title": "Research Methodology and Technical Report Writing",
+    "credit_units": 3,
+    "semester": 1,
+    "level": 400,
+    "description": "Foundations, types and approaches to research. Research methods versus methodology. Principles of scientific research and problem formulation. Developing research proposals and plans. Literature review. Elicitation techniques: questionnaires, interviewing and ethnography. System design and UML analysis. Technical report writing, citation and referencing.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 40,
+    "quantitative_calculation": 10,
+    "practical_application": 10,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 50,
+  "fields": {
+    "code": "SEN401",
+    "title": "Software Configuration Management and Maintenance",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 400,
+    "description": "Management of the software configuration management process. Planning, the SCM plan and surveillance. Configuration identification and the software library. Configuration control: requesting, evaluating and approving changes. Status accounting and auditing. Key issues in software maintenance, cost estimation, re-engineering, reverse engineering, migration and retirement.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 25,
+    "quantitative_calculation": 5,
+    "practical_application": 35,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 51,
+  "fields": {
+    "code": "SEN497",
+    "title": "Final Year Student's Project I",
+    "credit_units": 3,
+    "semester": 1,
+    "level": 400,
+    "description": "An independent or group investigation addressing a Software Engineering problem under supervision. A written proposal is submitted before registration. The introduction, literature review and methodology are submitted for grading at the end of the semester, with an oral presentation where required.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 30,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 25,
+    "quantitative_calculation": 10,
+    "practical_application": 15,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 52,
+  "fields": {
+    "code": "INS401",
+    "title": "Project Management",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 400,
+    "description": "The project management lifecycle, context and processes. Managing project teams, communication and scope. Project scheduling techniques and common problems. Managing project resources, quality and risk. Project procurement, external acquisition and outsourcing. Project execution, control, closure and auditing.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 35,
+    "quantitative_calculation": 10,
+    "practical_application": 20,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 53,
+  "fields": {
+    "code": "SUN-CSC401",
+    "title": "Natural Language Processing I",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 400,
+    "description": "Overview of NLP and its applications. Basic linguistics: morphology, syntax and semantics. Text representation: tokenisation, stemming and lemmatisation. Language models and probability theory. Information retrieval and text classification. Named entity recognition and part-of-speech tagging. Machine translation. Sentiment analysis and conversational agents.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "R"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 30,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 20,
+    "quantitative_calculation": 20,
+    "practical_application": 10,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 54,
+  "fields": {
+    "code": "SUN-ICT403",
+    "title": "Grantsmanship in Industry 4.0 Technologies",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 400,
+    "description": "Overview of the grant writing process and identifying funding opportunities. Developing a clear project concept and understanding the funder's perspective. Writing a persuasive proposal narrative supported by research and data. Creating a realistic budget. Effective communication with funders. Peer review and refinement before submission.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "General",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 40,
+    "quantitative_calculation": 10,
+    "practical_application": 20,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 55,
+  "fields": {
+    "code": "SUN-CSC405",
+    "title": "Optimization Techniques",
+    "credit_units": 2,
+    "semester": 1,
+    "level": 400,
+    "description": "Concept and classification of optimisation problems. Linear programming: formulation, simplex method, duality, sensitivity analysis, transportation and assignment problems, network minimisation and shortest route. Queuing theory. Unconstrained and constrained optimisation. Robust optimisation, network flows, discrete, dynamic and nonlinear optimisation.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "R"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 10,
+    "quantitative_calculation": 50,
+    "practical_application": 5,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 56,
+  "fields": {
+    "code": "SEN410",
+    "title": "Software Architecture and Design",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 400,
+    "description": "An in-depth look at software design. Design patterns, frameworks and architectures. Survey of current middleware architectures and design of distributed systems. Component based design. Measurement theory and the use of metrics in design. Designing for reliability, performance, safety, security and reusability. Evaluation and evolution of designs.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 40,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 20,
+    "quantitative_calculation": 5,
+    "practical_application": 15,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 57,
+  "fields": {
+    "code": "SEN498",
+    "title": "Final Year Student's Project II",
+    "credit_units": 3,
+    "semester": 2,
+    "level": 400,
+    "description": "Continuation of SEN497, containing the implementation and evaluation of the project. A formal written report covering chapters 4 and 5 is approved by the supervisor, and a final report comprising chapters 1 to 5 is submitted for final grading. An oral presentation is required.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Software Engineering",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "C"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 10,
+    "practical_application": 35,
+    "prerequisites": [
+      51
+    ]
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 58,
+  "fields": {
+    "code": "SUN-CSC402",
+    "title": "Natural Language Processing II",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 400,
+    "description": "Advanced text classification: hierarchical, multi-label and deep learning-based. Sequence labelling with conditional random fields and hidden Markov models. Advanced text generation, neural machine translation and text style transfer. Coreference resolution. Discourse analysis. Text mining and topic modelling with LDA and NMF.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "R"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 30,
+    "logical_reasoning": 20,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 25,
+    "practical_application": 10,
+    "prerequisites": [
+      53
+    ]
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 59,
+  "fields": {
+    "code": "SUN-SYS404",
+    "title": "Human-Computer Interaction",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 400,
+    "description": "Foundations of HCI and the concepts underlying its design. Principles of GUI and GUI toolkits. System design methods. User conceptual models and interface metaphors. Human cognitive and physical ergonomics. Human-centred software evaluation and development. GUI design, programming and practical evaluation.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "E"
+    },
+    "is_compulsory": false,
+    "is_active": true,
+    "abstract_reasoning": 20,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 25,
+    "quantitative_calculation": 0,
+    "practical_application": 40,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 60,
+  "fields": {
+    "code": "SUN-CSC406",
+    "title": "System Reliability Test",
+    "credit_units": 2,
+    "semester": 2,
+    "level": 400,
+    "description": "Concept of reliability and of probability in reliability. Failures and risks. Probability distributions for reliability. Failure types and causes, MTTF and MTBF, common mode failure and Failure Mode Effect Analysis. Reliability of series and parallel systems. Markov models. Fault tree and event tree analysis. Reliability in design and maintenance.",
+    "learning_objectives": "",
+    "major_topics": "",
+    "recommended_references": "",
+    "department_classification": "Computer Science",
+    "metadata": {
+      "source": "Summit University Offa, B.Sc. Software Engineering Handbook 2024-2028",
+      "delivery": "semester",
+      "handbook_status": "R"
+    },
+    "is_compulsory": true,
+    "is_active": true,
+    "abstract_reasoning": 15,
+    "logical_reasoning": 15,
+    "theoretical_knowledge": 15,
+    "quantitative_calculation": 50,
+    "practical_application": 5,
+    "prerequisites": []
+  }
+},
+{
+  "model": "courses.transcriptentry",
+  "pk": 1,
+  "fields": {
+    "student": 2,
+    "course": 18,
+    "semester": "First",
+    "grade": "A",
+    "credit_points": 5.0,
+    "status": "passed",
+    "created_at": "2026-08-06T15:05:05.521Z"
+  }
+},
+{
+  "model": "courses.transcriptentry",
+  "pk": 2,
+  "fields": {
+    "student": 2,
+    "course": 16,
+    "semester": "First",
+    "grade": "E",
+    "credit_points": 1.0,
+    "status": "passed",
+    "created_at": "2026-08-06T15:05:26.262Z"
+  }
+},
+{
+  "model": "advisories.cognitiveprofile",
+  "pk": 1,
+  "fields": {
+    "student": 2,
+    "abstract_reasoning": 20.2,
+    "logical_reasoning": 21.0,
+    "theoretical_knowledge": 18.6,
+    "quantitative_calculation": 19.1,
+    "practical_application": 21.1,
+    "updated_at": "2026-08-06T15:05:49.228Z"
+  }
+},
+{
+  "model": "advisories.recommendation",
+  "pk": 1,
+  "fields": {
+    "student": 2,
+    "generated_at": "2026-08-06T15:03:57.729Z",
+    "explanation": "Measured mastery is strongest in practical application (50%) and weakest in abstract reasoning (50%). This plan covers 6 course(s) totalling 12 units for 300 level, semester 1. Only 12 units are legally available to you this semester, which is below the 15-unit minimum. Speak to your advisor about a waiver or an approved substitution. No course available to you this semester clears the 60% confidence mark, so every option carries real risk. This student needs direct academic support, not just a lighter timetable.",
+    "rule_snapshot": {
+      "courses": [
+        {
+          "id": 35,
+          "code": "SUN-ICT303",
+          "level": 300,
+          "title": "Family Skills for 21st Century Learners",
+          "value": 70.0,
+          "density": 70.0,
+          "attempts": 0,
+          "priority": 1.4,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": true,
+          "description": "The concept of family and its role in personal and social development. Dimensions of family life: relationships, communication and conflict resolution. Principles and practices of effective leadership: vision, strategy, motivation, decision-making, delegation and team-building. Leadership styles and their impact.",
+          "explanation": "Core 300-level course for your programme. It is mainly theoretical knowledge work, where your measured mastery is 50%. Projected performance: 50%.",
+          "credit_units": 1,
+          "dominant_dim": "theoretical_knowledge",
+          "strain_index": 0.0,
+          "compatibility": 50.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 10,
+            "abstract_reasoning": 10,
+            "practical_application": 25,
+            "theoretical_knowledge": 55,
+            "quantitative_calculation": 0
+          },
+          "expected_success": 50.0
+        },
+        {
+          "id": 32,
+          "code": "SEN301",
+          "level": 300,
+          "title": "Object-Oriented Analysis and Design",
+          "value": 70.0,
+          "density": 35.0,
+          "attempts": 0,
+          "priority": 1.4,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": true,
+          "description": "Object-oriented approach to information system development. Importance and principles of modelling. Conceptual model of the Unified Modelling Language (UML), architecture and the software development life cycle. Use case, activity, class, state chart, component and deployment diagrams. UML-based CASE tools.",
+          "explanation": "Core 300-level course for your programme. It is mainly abstract reasoning work, where your measured mastery is 50%. Projected performance: 50%.",
+          "credit_units": 2,
+          "dominant_dim": "abstract_reasoning",
+          "strain_index": 0.0,
+          "compatibility": 50.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 20,
+            "abstract_reasoning": 35,
+            "practical_application": 30,
+            "theoretical_knowledge": 15,
+            "quantitative_calculation": 0
+          },
+          "expected_success": 50.0
+        },
+        {
+          "id": 34,
+          "code": "SUN-ICT301",
+          "level": 300,
+          "title": "Acadopreneurship",
+          "value": 70.0,
+          "density": 35.0,
+          "attempts": 0,
+          "priority": 1.4,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": true,
+          "description": "Transforming academic ideas and research outputs into startups. Theory of acadopreneurship. Ideation and business planning, intellectual property protection and technology transfer. Entrepreneurial marketing, sales, finance and investment. The business model canvas. Implementation, scaling, and legal and ethical issues.",
+          "explanation": "Core 300-level course for your programme. It is mainly theoretical knowledge work, where your measured mastery is 50%. Projected performance: 50%.",
+          "credit_units": 2,
+          "dominant_dim": "theoretical_knowledge",
+          "strain_index": 0.0,
+          "compatibility": 50.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 15,
+            "abstract_reasoning": 15,
+            "practical_application": 20,
+            "theoretical_knowledge": 40,
+            "quantitative_calculation": 10
+          },
+          "expected_success": 50.0
+        },
+        {
+          "id": 36,
+          "code": "SUN-SFE305",
+          "level": 300,
+          "title": "Programming with Python I",
+          "value": 50.0,
+          "density": 25.0,
+          "attempts": 0,
+          "priority": 1.0,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": false,
+          "description": "History of Python and configuring the development environment. Basic data types and structures. Control structures. Functions, modules and packages. Object-oriented programming in Python: classes, encapsulation, inheritance and polymorphism. File handling and I/O. Error handling, assertions, unit tests and test-driven development.",
+          "explanation": "Elective aligned to your 300-level plan. It is mainly practical application work, where your measured mastery is 50%. Projected performance: 50%.",
+          "credit_units": 2,
+          "dominant_dim": "practical_application",
+          "strain_index": 0.0,
+          "compatibility": 50.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 25,
+            "abstract_reasoning": 15,
+            "practical_application": 45,
+            "theoretical_knowledge": 10,
+            "quantitative_calculation": 5
+          },
+          "expected_success": 50.0
+        },
+        {
+          "id": 37,
+          "code": "SUN-SFE307",
+          "level": 300,
+          "title": "Data Management I",
+          "value": 50.0,
+          "density": 25.0,
+          "attempts": 0,
+          "priority": 1.0,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": false,
+          "description": "Information management concepts: storage, retrieval, capture and representation. Analysis and indexing, information privacy, integrity and security. Introduction to database systems and DBMS functions. Database architecture and data independence. Relational and semi-structured data models. Database design, query processing, concurrency and recovery.",
+          "explanation": "Elective aligned to your 300-level plan. It is mainly practical application work, where your measured mastery is 50%. Projected performance: 50%.",
+          "credit_units": 2,
+          "dominant_dim": "practical_application",
+          "strain_index": 0.0,
+          "compatibility": 50.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 20,
+            "abstract_reasoning": 20,
+            "practical_application": 30,
+            "theoretical_knowledge": 25,
+            "quantitative_calculation": 5
+          },
+          "expected_success": 50.0
+        },
+        {
+          "id": 33,
+          "code": "CSC301",
+          "level": 300,
+          "title": "Data Structures",
+          "value": 70.0,
+          "density": 23.333,
+          "attempts": 0,
+          "priority": 1.4,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": true,
+          "description": "Primitive types, arrays, records, strings and string processing. Data representation in memory. Stack and heap allocation. Queues and trees, and implementation strategies for them. Run-time storage management. Pointers, references and linked structures. Algorithm efficiency using big-O notation.",
+          "explanation": "Core 300-level course for your programme. It is mainly abstract reasoning work, where your measured mastery is 50%. Projected performance: 50%.",
+          "credit_units": 3,
+          "dominant_dim": "abstract_reasoning",
+          "strain_index": 0.0,
+          "compatibility": 50.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 30,
+            "abstract_reasoning": 30,
+            "practical_application": 15,
+            "theoretical_knowledge": 10,
+            "quantitative_calculation": 15
+          },
+          "expected_success": 50.0
+        }
+      ],
+      "mastery": {
+        "logical_reasoning": 50.0,
+        "abstract_reasoning": 50.0,
+        "practical_application": 50.0,
+        "theoretical_knowledge": 50.0,
+        "quantitative_calculation": 50.0
+      },
+      "profile": {
+        "logical_reasoning": 20.0,
+        "abstract_reasoning": 20.0,
+        "practical_application": 20.0,
+        "theoretical_knowledge": 20.0,
+        "quantitative_calculation": 20.0
+      },
+      "evidence": {
+        "logical_reasoning": 0.0,
+        "abstract_reasoning": 0.0,
+        "practical_application": 0.0,
+        "theoretical_knowledge": 0.0,
+        "quantitative_calculation": 0.0
+      },
+      "warnings": [
+        "Only 12 units are legally available to you this semester, which is below the 15-unit minimum. Speak to your advisor about a waiver or an approved substitution.",
+        "No course available to you this semester clears the 60% confidence mark, so every option carries real risk. This student needs direct academic support, not just a lighter timetable."
+      ],
+      "max_units": 24,
+      "min_units": 15,
+      "next_cycle": {
+        "level": 400,
+        "courses": [
+          {
+            "id": 52,
+            "code": "INS401",
+            "level": 400,
+            "title": "Project Management",
+            "value": 70.0,
+            "density": 35.0,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "The project management lifecycle, context and processes. Managing project teams, communication and scope. Project scheduling techniques and common problems. Managing project resources, quality and risk. Project procurement, external acquisition and outsourcing. Project execution, control, closure and auditing.",
+            "credit_units": 2,
+            "dominant_dim": "theoretical_knowledge",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 15,
+              "practical_application": 20,
+              "theoretical_knowledge": 35,
+              "quantitative_calculation": 10
+            },
+            "expected_success": 50.0
+          },
+          {
+            "id": 50,
+            "code": "SEN401",
+            "level": 400,
+            "title": "Software Configuration Management and Maintenance",
+            "value": 70.0,
+            "density": 35.0,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Management of the software configuration management process. Planning, the SCM plan and surveillance. Configuration identification and the software library. Configuration control: requesting, evaluating and approving changes. Status accounting and auditing. Key issues in software maintenance, cost estimation, re-engineering, reverse engineering, migration and retirement.",
+            "credit_units": 2,
+            "dominant_dim": "practical_application",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 15,
+              "practical_application": 35,
+              "theoretical_knowledge": 25,
+              "quantitative_calculation": 5
+            },
+            "expected_success": 50.0
+          },
+          {
+            "id": 53,
+            "code": "SUN-CSC401",
+            "level": 400,
+            "title": "Natural Language Processing I",
+            "value": 70.0,
+            "density": 35.0,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Overview of NLP and its applications. Basic linguistics: morphology, syntax and semantics. Text representation: tokenisation, stemming and lemmatisation. Language models and probability theory. Information retrieval and text classification. Named entity recognition and part-of-speech tagging. Machine translation. Sentiment analysis and conversational agents.",
+            "credit_units": 2,
+            "dominant_dim": "abstract_reasoning",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 30,
+              "practical_application": 10,
+              "theoretical_knowledge": 20,
+              "quantitative_calculation": 20
+            },
+            "expected_success": 50.0
+          },
+          {
+            "id": 55,
+            "code": "SUN-CSC405",
+            "level": 400,
+            "title": "Optimization Techniques",
+            "value": 70.0,
+            "density": 35.0,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Concept and classification of optimisation problems. Linear programming: formulation, simplex method, duality, sensitivity analysis, transportation and assignment problems, network minimisation and shortest route. Queuing theory. Unconstrained and constrained optimisation. Robust optimisation, network flows, discrete, dynamic and nonlinear optimisation.",
+            "credit_units": 2,
+            "dominant_dim": "quantitative_calculation",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 15,
+              "abstract_reasoning": 20,
+              "practical_application": 5,
+              "theoretical_knowledge": 10,
+              "quantitative_calculation": 50
+            },
+            "expected_success": 50.0
+          },
+          {
+            "id": 54,
+            "code": "SUN-ICT403",
+            "level": 400,
+            "title": "Grantsmanship in Industry 4.0 Technologies",
+            "value": 70.0,
+            "density": 35.0,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Overview of the grant writing process and identifying funding opportunities. Developing a clear project concept and understanding the funder's perspective. Writing a persuasive proposal narrative supported by research and data. Creating a realistic budget. Effective communication with funders. Peer review and refinement before submission.",
+            "credit_units": 2,
+            "dominant_dim": "theoretical_knowledge",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 15,
+              "abstract_reasoning": 15,
+              "practical_application": 20,
+              "theoretical_knowledge": 40,
+              "quantitative_calculation": 10
+            },
+            "expected_success": 50.0
+          },
+          {
+            "id": 49,
+            "code": "COS409",
+            "level": 400,
+            "title": "Research Methodology and Technical Report Writing",
+            "value": 70.0,
+            "density": 23.333,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Foundations, types and approaches to research. Research methods versus methodology. Principles of scientific research and problem formulation. Developing research proposals and plans. Literature review. Elicitation techniques: questionnaires, interviewing and ethnography. System design and UML analysis. Technical report writing, citation and referencing.",
+            "credit_units": 3,
+            "dominant_dim": "theoretical_knowledge",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 20,
+              "practical_application": 10,
+              "theoretical_knowledge": 40,
+              "quantitative_calculation": 10
+            },
+            "expected_success": 50.0
+          },
+          {
+            "id": 51,
+            "code": "SEN497",
+            "level": 400,
+            "title": "Final Year Student's Project I",
+            "value": 70.0,
+            "density": 23.333,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "An independent or group investigation addressing a Software Engineering problem under supervision. A written proposal is submitted before registration. The introduction, literature review and methodology are submitted for grading at the end of the semester, with an oral presentation where required.",
+            "credit_units": 3,
+            "dominant_dim": "abstract_reasoning",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 30,
+              "practical_application": 15,
+              "theoretical_knowledge": 25,
+              "quantitative_calculation": 10
+            },
+            "expected_success": 50.0
+          }
+        ],
+        "session": "2026/2027",
+        "semester": 1,
+        "total_units": 16,
+        "still_deferred": []
+      },
+      "total_units": 12,
+      "course_count": 6,
+      "helplessness": {
+        "logical_reasoning": 0.0,
+        "abstract_reasoning": 0.0,
+        "practical_application": 0.0,
+        "theoretical_knowledge": 0.0,
+        "quantitative_calculation": 0.0
+      },
+      "meets_policy": false,
+      "cognitive_load": {
+        "logical_reasoning": 2.6,
+        "abstract_reasoning": 2.7,
+        "practical_application": 3.2,
+        "theoretical_knowledge": 2.65,
+        "quantitative_calculation": 0.85
+      },
+      "failure_counts": {},
+      "strain_budgets": {
+        "logical_reasoning": 9.6,
+        "abstract_reasoning": 9.6,
+        "practical_application": 9.6,
+        "theoretical_knowledge": 9.6,
+        "quantitative_calculation": 9.6
+      },
+      "deferred_courses": []
+    },
+    "review_status": "pending_review",
+    "student_acknowledged": false,
+    "student_note": "",
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "review_notes": "",
+    "selected_courses": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ]
+  }
+},
+{
+  "model": "advisories.recommendation",
+  "pk": 2,
+  "fields": {
+    "student": 2,
+    "generated_at": "2026-08-06T15:04:49.846Z",
+    "explanation": "Measured mastery is strongest in practical application (50%) and weakest in abstract reasoning (50%). This plan covers 6 course(s) totalling 12 units for 300 level, semester 1. Only 12 units are legally available to you this semester, which is below the 15-unit minimum. Speak to your advisor about a waiver or an approved substitution. No course available to you this semester clears the 60% confidence mark, so every option carries real risk. This student needs direct academic support, not just a lighter timetable.",
+    "rule_snapshot": {
+      "courses": [
+        {
+          "id": 35,
+          "code": "SUN-ICT303",
+          "level": 300,
+          "title": "Family Skills for 21st Century Learners",
+          "value": 70.0,
+          "density": 70.0,
+          "attempts": 0,
+          "priority": 1.4,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": true,
+          "description": "The concept of family and its role in personal and social development. Dimensions of family life: relationships, communication and conflict resolution. Principles and practices of effective leadership: vision, strategy, motivation, decision-making, delegation and team-building. Leadership styles and their impact.",
+          "explanation": "Core 300-level course for your programme. It is mainly theoretical knowledge work, where your measured mastery is 50%. Projected performance: 50%.",
+          "credit_units": 1,
+          "dominant_dim": "theoretical_knowledge",
+          "strain_index": 0.0,
+          "compatibility": 50.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 10,
+            "abstract_reasoning": 10,
+            "practical_application": 25,
+            "theoretical_knowledge": 55,
+            "quantitative_calculation": 0
+          },
+          "expected_success": 50.0
+        },
+        {
+          "id": 32,
+          "code": "SEN301",
+          "level": 300,
+          "title": "Object-Oriented Analysis and Design",
+          "value": 70.0,
+          "density": 35.0,
+          "attempts": 0,
+          "priority": 1.4,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": true,
+          "description": "Object-oriented approach to information system development. Importance and principles of modelling. Conceptual model of the Unified Modelling Language (UML), architecture and the software development life cycle. Use case, activity, class, state chart, component and deployment diagrams. UML-based CASE tools.",
+          "explanation": "Core 300-level course for your programme. It is mainly abstract reasoning work, where your measured mastery is 50%. Projected performance: 50%.",
+          "credit_units": 2,
+          "dominant_dim": "abstract_reasoning",
+          "strain_index": 0.0,
+          "compatibility": 50.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 20,
+            "abstract_reasoning": 35,
+            "practical_application": 30,
+            "theoretical_knowledge": 15,
+            "quantitative_calculation": 0
+          },
+          "expected_success": 50.0
+        },
+        {
+          "id": 34,
+          "code": "SUN-ICT301",
+          "level": 300,
+          "title": "Acadopreneurship",
+          "value": 70.0,
+          "density": 35.0,
+          "attempts": 0,
+          "priority": 1.4,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": true,
+          "description": "Transforming academic ideas and research outputs into startups. Theory of acadopreneurship. Ideation and business planning, intellectual property protection and technology transfer. Entrepreneurial marketing, sales, finance and investment. The business model canvas. Implementation, scaling, and legal and ethical issues.",
+          "explanation": "Core 300-level course for your programme. It is mainly theoretical knowledge work, where your measured mastery is 50%. Projected performance: 50%.",
+          "credit_units": 2,
+          "dominant_dim": "theoretical_knowledge",
+          "strain_index": 0.0,
+          "compatibility": 50.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 15,
+            "abstract_reasoning": 15,
+            "practical_application": 20,
+            "theoretical_knowledge": 40,
+            "quantitative_calculation": 10
+          },
+          "expected_success": 50.0
+        },
+        {
+          "id": 36,
+          "code": "SUN-SFE305",
+          "level": 300,
+          "title": "Programming with Python I",
+          "value": 50.0,
+          "density": 25.0,
+          "attempts": 0,
+          "priority": 1.0,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": false,
+          "description": "History of Python and configuring the development environment. Basic data types and structures. Control structures. Functions, modules and packages. Object-oriented programming in Python: classes, encapsulation, inheritance and polymorphism. File handling and I/O. Error handling, assertions, unit tests and test-driven development.",
+          "explanation": "Elective aligned to your 300-level plan. It is mainly practical application work, where your measured mastery is 50%. Projected performance: 50%.",
+          "credit_units": 2,
+          "dominant_dim": "practical_application",
+          "strain_index": 0.0,
+          "compatibility": 50.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 25,
+            "abstract_reasoning": 15,
+            "practical_application": 45,
+            "theoretical_knowledge": 10,
+            "quantitative_calculation": 5
+          },
+          "expected_success": 50.0
+        },
+        {
+          "id": 37,
+          "code": "SUN-SFE307",
+          "level": 300,
+          "title": "Data Management I",
+          "value": 50.0,
+          "density": 25.0,
+          "attempts": 0,
+          "priority": 1.0,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": false,
+          "description": "Information management concepts: storage, retrieval, capture and representation. Analysis and indexing, information privacy, integrity and security. Introduction to database systems and DBMS functions. Database architecture and data independence. Relational and semi-structured data models. Database design, query processing, concurrency and recovery.",
+          "explanation": "Elective aligned to your 300-level plan. It is mainly practical application work, where your measured mastery is 50%. Projected performance: 50%.",
+          "credit_units": 2,
+          "dominant_dim": "practical_application",
+          "strain_index": 0.0,
+          "compatibility": 50.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 20,
+            "abstract_reasoning": 20,
+            "practical_application": 30,
+            "theoretical_knowledge": 25,
+            "quantitative_calculation": 5
+          },
+          "expected_success": 50.0
+        },
+        {
+          "id": 33,
+          "code": "CSC301",
+          "level": 300,
+          "title": "Data Structures",
+          "value": 70.0,
+          "density": 23.333,
+          "attempts": 0,
+          "priority": 1.4,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": true,
+          "description": "Primitive types, arrays, records, strings and string processing. Data representation in memory. Stack and heap allocation. Queues and trees, and implementation strategies for them. Run-time storage management. Pointers, references and linked structures. Algorithm efficiency using big-O notation.",
+          "explanation": "Core 300-level course for your programme. It is mainly abstract reasoning work, where your measured mastery is 50%. Projected performance: 50%.",
+          "credit_units": 3,
+          "dominant_dim": "abstract_reasoning",
+          "strain_index": 0.0,
+          "compatibility": 50.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 30,
+            "abstract_reasoning": 30,
+            "practical_application": 15,
+            "theoretical_knowledge": 10,
+            "quantitative_calculation": 15
+          },
+          "expected_success": 50.0
+        }
+      ],
+      "mastery": {
+        "logical_reasoning": 50.0,
+        "abstract_reasoning": 50.0,
+        "practical_application": 50.0,
+        "theoretical_knowledge": 50.0,
+        "quantitative_calculation": 50.0
+      },
+      "profile": {
+        "logical_reasoning": 20.0,
+        "abstract_reasoning": 20.0,
+        "practical_application": 20.0,
+        "theoretical_knowledge": 20.0,
+        "quantitative_calculation": 20.0
+      },
+      "evidence": {
+        "logical_reasoning": 0.0,
+        "abstract_reasoning": 0.0,
+        "practical_application": 0.0,
+        "theoretical_knowledge": 0.0,
+        "quantitative_calculation": 0.0
+      },
+      "warnings": [
+        "Only 12 units are legally available to you this semester, which is below the 15-unit minimum. Speak to your advisor about a waiver or an approved substitution.",
+        "No course available to you this semester clears the 60% confidence mark, so every option carries real risk. This student needs direct academic support, not just a lighter timetable."
+      ],
+      "max_units": 24,
+      "min_units": 15,
+      "next_cycle": {
+        "level": 400,
+        "courses": [
+          {
+            "id": 52,
+            "code": "INS401",
+            "level": 400,
+            "title": "Project Management",
+            "value": 70.0,
+            "density": 35.0,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "The project management lifecycle, context and processes. Managing project teams, communication and scope. Project scheduling techniques and common problems. Managing project resources, quality and risk. Project procurement, external acquisition and outsourcing. Project execution, control, closure and auditing.",
+            "credit_units": 2,
+            "dominant_dim": "theoretical_knowledge",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 15,
+              "practical_application": 20,
+              "theoretical_knowledge": 35,
+              "quantitative_calculation": 10
+            },
+            "expected_success": 50.0
+          },
+          {
+            "id": 50,
+            "code": "SEN401",
+            "level": 400,
+            "title": "Software Configuration Management and Maintenance",
+            "value": 70.0,
+            "density": 35.0,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Management of the software configuration management process. Planning, the SCM plan and surveillance. Configuration identification and the software library. Configuration control: requesting, evaluating and approving changes. Status accounting and auditing. Key issues in software maintenance, cost estimation, re-engineering, reverse engineering, migration and retirement.",
+            "credit_units": 2,
+            "dominant_dim": "practical_application",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 15,
+              "practical_application": 35,
+              "theoretical_knowledge": 25,
+              "quantitative_calculation": 5
+            },
+            "expected_success": 50.0
+          },
+          {
+            "id": 53,
+            "code": "SUN-CSC401",
+            "level": 400,
+            "title": "Natural Language Processing I",
+            "value": 70.0,
+            "density": 35.0,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Overview of NLP and its applications. Basic linguistics: morphology, syntax and semantics. Text representation: tokenisation, stemming and lemmatisation. Language models and probability theory. Information retrieval and text classification. Named entity recognition and part-of-speech tagging. Machine translation. Sentiment analysis and conversational agents.",
+            "credit_units": 2,
+            "dominant_dim": "abstract_reasoning",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 30,
+              "practical_application": 10,
+              "theoretical_knowledge": 20,
+              "quantitative_calculation": 20
+            },
+            "expected_success": 50.0
+          },
+          {
+            "id": 55,
+            "code": "SUN-CSC405",
+            "level": 400,
+            "title": "Optimization Techniques",
+            "value": 70.0,
+            "density": 35.0,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Concept and classification of optimisation problems. Linear programming: formulation, simplex method, duality, sensitivity analysis, transportation and assignment problems, network minimisation and shortest route. Queuing theory. Unconstrained and constrained optimisation. Robust optimisation, network flows, discrete, dynamic and nonlinear optimisation.",
+            "credit_units": 2,
+            "dominant_dim": "quantitative_calculation",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 15,
+              "abstract_reasoning": 20,
+              "practical_application": 5,
+              "theoretical_knowledge": 10,
+              "quantitative_calculation": 50
+            },
+            "expected_success": 50.0
+          },
+          {
+            "id": 54,
+            "code": "SUN-ICT403",
+            "level": 400,
+            "title": "Grantsmanship in Industry 4.0 Technologies",
+            "value": 70.0,
+            "density": 35.0,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Overview of the grant writing process and identifying funding opportunities. Developing a clear project concept and understanding the funder's perspective. Writing a persuasive proposal narrative supported by research and data. Creating a realistic budget. Effective communication with funders. Peer review and refinement before submission.",
+            "credit_units": 2,
+            "dominant_dim": "theoretical_knowledge",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 15,
+              "abstract_reasoning": 15,
+              "practical_application": 20,
+              "theoretical_knowledge": 40,
+              "quantitative_calculation": 10
+            },
+            "expected_success": 50.0
+          },
+          {
+            "id": 49,
+            "code": "COS409",
+            "level": 400,
+            "title": "Research Methodology and Technical Report Writing",
+            "value": 70.0,
+            "density": 23.333,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Foundations, types and approaches to research. Research methods versus methodology. Principles of scientific research and problem formulation. Developing research proposals and plans. Literature review. Elicitation techniques: questionnaires, interviewing and ethnography. System design and UML analysis. Technical report writing, citation and referencing.",
+            "credit_units": 3,
+            "dominant_dim": "theoretical_knowledge",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 20,
+              "practical_application": 10,
+              "theoretical_knowledge": 40,
+              "quantitative_calculation": 10
+            },
+            "expected_success": 50.0
+          },
+          {
+            "id": 51,
+            "code": "SEN497",
+            "level": 400,
+            "title": "Final Year Student's Project I",
+            "value": 70.0,
+            "density": 23.333,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "An independent or group investigation addressing a Software Engineering problem under supervision. A written proposal is submitted before registration. The introduction, literature review and methodology are submitted for grading at the end of the semester, with an oral presentation where required.",
+            "credit_units": 3,
+            "dominant_dim": "abstract_reasoning",
+            "strain_index": 0.0,
+            "compatibility": 50.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 30,
+              "practical_application": 15,
+              "theoretical_knowledge": 25,
+              "quantitative_calculation": 10
+            },
+            "expected_success": 50.0
+          }
+        ],
+        "session": "2026/2027",
+        "semester": 1,
+        "total_units": 16,
+        "still_deferred": []
+      },
+      "total_units": 12,
+      "course_count": 6,
+      "helplessness": {
+        "logical_reasoning": 0.0,
+        "abstract_reasoning": 0.0,
+        "practical_application": 0.0,
+        "theoretical_knowledge": 0.0,
+        "quantitative_calculation": 0.0
+      },
+      "meets_policy": false,
+      "cognitive_load": {
+        "logical_reasoning": 2.6,
+        "abstract_reasoning": 2.7,
+        "practical_application": 3.2,
+        "theoretical_knowledge": 2.65,
+        "quantitative_calculation": 0.85
+      },
+      "failure_counts": {},
+      "strain_budgets": {
+        "logical_reasoning": 9.6,
+        "abstract_reasoning": 9.6,
+        "practical_application": 9.6,
+        "theoretical_knowledge": 9.6,
+        "quantitative_calculation": 9.6
+      },
+      "deferred_courses": []
+    },
+    "review_status": "pending_review",
+    "student_acknowledged": false,
+    "student_note": "",
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "review_notes": "",
+    "selected_courses": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ]
+  }
+},
+{
+  "model": "advisories.recommendation",
+  "pk": 3,
+  "fields": {
+    "student": 2,
+    "generated_at": "2026-08-06T15:05:49.232Z",
+    "explanation": "Measured mastery is strongest in practical application (55%) and weakest in theoretical knowledge (49%). This plan covers 6 course(s) totalling 12 units for 300 level, semester 1. Only 12 units are legally available to you this semester, which is below the 15-unit minimum. Speak to your advisor about a waiver or an approved substitution. No course available to you this semester clears the 60% confidence mark, so every option carries real risk. This student needs direct academic support, not just a lighter timetable.",
+    "rule_snapshot": {
+      "courses": [
+        {
+          "id": 35,
+          "code": "SUN-ICT303",
+          "level": 300,
+          "title": "Family Skills for 21st Century Learners",
+          "value": 71.96,
+          "density": 71.96,
+          "attempts": 0,
+          "priority": 1.4,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": true,
+          "description": "The concept of family and its role in personal and social development. Dimensions of family life: relationships, communication and conflict resolution. Principles and practices of effective leadership: vision, strategy, motivation, decision-making, delegation and team-building. Leadership styles and their impact.",
+          "explanation": "Core 300-level course for your programme. It is mainly theoretical knowledge work, where your measured mastery is 49%. Projected performance: 51%.",
+          "credit_units": 1,
+          "dominant_dim": "theoretical_knowledge",
+          "strain_index": 0.0,
+          "compatibility": 51.4,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 10,
+            "abstract_reasoning": 10,
+            "practical_application": 25,
+            "theoretical_knowledge": 55,
+            "quantitative_calculation": 0
+          },
+          "expected_success": 51.4
+        },
+        {
+          "id": 32,
+          "code": "SEN301",
+          "level": 300,
+          "title": "Object-Oriented Analysis and Design",
+          "value": 74.9,
+          "density": 37.45,
+          "attempts": 0,
+          "priority": 1.4,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": true,
+          "description": "Object-oriented approach to information system development. Importance and principles of modelling. Conceptual model of the Unified Modelling Language (UML), architecture and the software development life cycle. Use case, activity, class, state chart, component and deployment diagrams. UML-based CASE tools.",
+          "explanation": "Core 300-level course for your programme. It is mainly abstract reasoning work, where your measured mastery is 53%. Projected performance: 54%.",
+          "credit_units": 2,
+          "dominant_dim": "abstract_reasoning",
+          "strain_index": 0.0,
+          "compatibility": 53.5,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 20,
+            "abstract_reasoning": 35,
+            "practical_application": 30,
+            "theoretical_knowledge": 15,
+            "quantitative_calculation": 0
+          },
+          "expected_success": 53.5
+        },
+        {
+          "id": 34,
+          "code": "SUN-ICT301",
+          "level": 300,
+          "title": "Acadopreneurship",
+          "value": 72.52,
+          "density": 36.26,
+          "attempts": 0,
+          "priority": 1.4,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": true,
+          "description": "Transforming academic ideas and research outputs into startups. Theory of acadopreneurship. Ideation and business planning, intellectual property protection and technology transfer. Entrepreneurial marketing, sales, finance and investment. The business model canvas. Implementation, scaling, and legal and ethical issues.",
+          "explanation": "Core 300-level course for your programme. It is mainly theoretical knowledge work, where your measured mastery is 49%. Projected performance: 52%.",
+          "credit_units": 2,
+          "dominant_dim": "theoretical_knowledge",
+          "strain_index": 0.0,
+          "compatibility": 51.8,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 15,
+            "abstract_reasoning": 15,
+            "practical_application": 20,
+            "theoretical_knowledge": 40,
+            "quantitative_calculation": 10
+          },
+          "expected_success": 51.8
+        },
+        {
+          "id": 36,
+          "code": "SUN-SFE305",
+          "level": 300,
+          "title": "Programming with Python I",
+          "value": 54.0,
+          "density": 27.0,
+          "attempts": 0,
+          "priority": 1.0,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": false,
+          "description": "History of Python and configuring the development environment. Basic data types and structures. Control structures. Functions, modules and packages. Object-oriented programming in Python: classes, encapsulation, inheritance and polymorphism. File handling and I/O. Error handling, assertions, unit tests and test-driven development.",
+          "explanation": "Elective aligned to your 300-level plan. It is mainly practical application work, where your measured mastery is 55%. Projected performance: 54%.",
+          "credit_units": 2,
+          "dominant_dim": "practical_application",
+          "strain_index": 0.0,
+          "compatibility": 54.0,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 25,
+            "abstract_reasoning": 15,
+            "practical_application": 45,
+            "theoretical_knowledge": 10,
+            "quantitative_calculation": 5
+          },
+          "expected_success": 54.0
+        },
+        {
+          "id": 37,
+          "code": "SUN-SFE307",
+          "level": 300,
+          "title": "Data Management I",
+          "value": 52.9,
+          "density": 26.45,
+          "attempts": 0,
+          "priority": 1.0,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": false,
+          "description": "Information management concepts: storage, retrieval, capture and representation. Analysis and indexing, information privacy, integrity and security. Introduction to database systems and DBMS functions. Database architecture and data independence. Relational and semi-structured data models. Database design, query processing, concurrency and recovery.",
+          "explanation": "Elective aligned to your 300-level plan. It is mainly practical application work, where your measured mastery is 55%. Projected performance: 53%.",
+          "credit_units": 2,
+          "dominant_dim": "practical_application",
+          "strain_index": 0.0,
+          "compatibility": 52.9,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 20,
+            "abstract_reasoning": 20,
+            "practical_application": 30,
+            "theoretical_knowledge": 25,
+            "quantitative_calculation": 5
+          },
+          "expected_success": 52.9
+        },
+        {
+          "id": 33,
+          "code": "CSC301",
+          "level": 300,
+          "title": "Data Structures",
+          "value": 74.34,
+          "density": 24.78,
+          "attempts": 0,
+          "priority": 1.4,
+          "semester": 1,
+          "carryover": false,
+          "compulsory": true,
+          "description": "Primitive types, arrays, records, strings and string processing. Data representation in memory. Stack and heap allocation. Queues and trees, and implementation strategies for them. Run-time storage management. Pointers, references and linked structures. Algorithm efficiency using big-O notation.",
+          "explanation": "Core 300-level course for your programme. It is mainly abstract reasoning work, where your measured mastery is 53%. Projected performance: 53%.",
+          "credit_units": 3,
+          "dominant_dim": "abstract_reasoning",
+          "strain_index": 0.0,
+          "compatibility": 53.1,
+          "levels_behind": 0,
+          "cognitive_dims": {
+            "logical_reasoning": 30,
+            "abstract_reasoning": 30,
+            "practical_application": 15,
+            "theoretical_knowledge": 10,
+            "quantitative_calculation": 15
+          },
+          "expected_success": 53.1
+        }
+      ],
+      "mastery": {
+        "logical_reasoning": 55.0,
+        "abstract_reasoning": 53.0,
+        "practical_application": 55.4,
+        "theoretical_knowledge": 48.7,
+        "quantitative_calculation": 50.2
+      },
+      "profile": {
+        "logical_reasoning": 21.0,
+        "abstract_reasoning": 20.2,
+        "practical_application": 21.1,
+        "theoretical_knowledge": 18.6,
+        "quantitative_calculation": 19.1
+      },
+      "evidence": {
+        "logical_reasoning": 1.2,
+        "abstract_reasoning": 0.9,
+        "practical_application": 1.45,
+        "theoretical_knowledge": 1.1,
+        "quantitative_calculation": 0.35
+      },
+      "warnings": [
+        "Only 12 units are legally available to you this semester, which is below the 15-unit minimum. Speak to your advisor about a waiver or an approved substitution.",
+        "No course available to you this semester clears the 60% confidence mark, so every option carries real risk. This student needs direct academic support, not just a lighter timetable."
+      ],
+      "max_units": 24,
+      "min_units": 15,
+      "next_cycle": {
+        "level": 400,
+        "courses": [
+          {
+            "id": 50,
+            "code": "SEN401",
+            "level": 400,
+            "title": "Software Configuration Management and Maintenance",
+            "value": 74.2,
+            "density": 37.1,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Management of the software configuration management process. Planning, the SCM plan and surveillance. Configuration identification and the software library. Configuration control: requesting, evaluating and approving changes. Status accounting and auditing. Key issues in software maintenance, cost estimation, re-engineering, reverse engineering, migration and retirement.",
+            "credit_units": 2,
+            "dominant_dim": "practical_application",
+            "strain_index": 0.0,
+            "compatibility": 53.0,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 15,
+              "practical_application": 35,
+              "theoretical_knowledge": 25,
+              "quantitative_calculation": 5
+            },
+            "expected_success": 53.0
+          },
+          {
+            "id": 53,
+            "code": "SUN-CSC401",
+            "level": 400,
+            "title": "Natural Language Processing I",
+            "value": 73.08,
+            "density": 36.54,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Overview of NLP and its applications. Basic linguistics: morphology, syntax and semantics. Text representation: tokenisation, stemming and lemmatisation. Language models and probability theory. Information retrieval and text classification. Named entity recognition and part-of-speech tagging. Machine translation. Sentiment analysis and conversational agents.",
+            "credit_units": 2,
+            "dominant_dim": "abstract_reasoning",
+            "strain_index": 0.0,
+            "compatibility": 52.2,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 30,
+              "practical_application": 10,
+              "theoretical_knowledge": 20,
+              "quantitative_calculation": 20
+            },
+            "expected_success": 52.2
+          },
+          {
+            "id": 52,
+            "code": "INS401",
+            "level": 400,
+            "title": "Project Management",
+            "value": 72.94,
+            "density": 36.47,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "The project management lifecycle, context and processes. Managing project teams, communication and scope. Project scheduling techniques and common problems. Managing project resources, quality and risk. Project procurement, external acquisition and outsourcing. Project execution, control, closure and auditing.",
+            "credit_units": 2,
+            "dominant_dim": "theoretical_knowledge",
+            "strain_index": 0.0,
+            "compatibility": 52.1,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 15,
+              "practical_application": 20,
+              "theoretical_knowledge": 35,
+              "quantitative_calculation": 10
+            },
+            "expected_success": 52.1
+          },
+          {
+            "id": 54,
+            "code": "SUN-ICT403",
+            "level": 400,
+            "title": "Grantsmanship in Industry 4.0 Technologies",
+            "value": 72.52,
+            "density": 36.26,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Overview of the grant writing process and identifying funding opportunities. Developing a clear project concept and understanding the funder's perspective. Writing a persuasive proposal narrative supported by research and data. Creating a realistic budget. Effective communication with funders. Peer review and refinement before submission.",
+            "credit_units": 2,
+            "dominant_dim": "theoretical_knowledge",
+            "strain_index": 0.0,
+            "compatibility": 51.8,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 15,
+              "abstract_reasoning": 15,
+              "practical_application": 20,
+              "theoretical_knowledge": 40,
+              "quantitative_calculation": 10
+            },
+            "expected_success": 51.8
+          },
+          {
+            "id": 55,
+            "code": "SUN-CSC405",
+            "level": 400,
+            "title": "Optimization Techniques",
+            "value": 72.24,
+            "density": 36.12,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Concept and classification of optimisation problems. Linear programming: formulation, simplex method, duality, sensitivity analysis, transportation and assignment problems, network minimisation and shortest route. Queuing theory. Unconstrained and constrained optimisation. Robust optimisation, network flows, discrete, dynamic and nonlinear optimisation.",
+            "credit_units": 2,
+            "dominant_dim": "quantitative_calculation",
+            "strain_index": 0.0,
+            "compatibility": 51.6,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 15,
+              "abstract_reasoning": 20,
+              "practical_application": 5,
+              "theoretical_knowledge": 10,
+              "quantitative_calculation": 50
+            },
+            "expected_success": 51.6
+          },
+          {
+            "id": 51,
+            "code": "SEN497",
+            "level": 400,
+            "title": "Final Year Student's Project I",
+            "value": 73.36,
+            "density": 24.453,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "An independent or group investigation addressing a Software Engineering problem under supervision. A written proposal is submitted before registration. The introduction, literature review and methodology are submitted for grading at the end of the semester, with an oral presentation where required.",
+            "credit_units": 3,
+            "dominant_dim": "abstract_reasoning",
+            "strain_index": 0.0,
+            "compatibility": 52.4,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 30,
+              "practical_application": 15,
+              "theoretical_knowledge": 25,
+              "quantitative_calculation": 10
+            },
+            "expected_success": 52.4
+          },
+          {
+            "id": 49,
+            "code": "COS409",
+            "level": 400,
+            "title": "Research Methodology and Technical Report Writing",
+            "value": 72.24,
+            "density": 24.08,
+            "attempts": 0,
+            "priority": 1.4,
+            "semester": 1,
+            "carryover": false,
+            "compulsory": true,
+            "description": "Foundations, types and approaches to research. Research methods versus methodology. Principles of scientific research and problem formulation. Developing research proposals and plans. Literature review. Elicitation techniques: questionnaires, interviewing and ethnography. System design and UML analysis. Technical report writing, citation and referencing.",
+            "credit_units": 3,
+            "dominant_dim": "theoretical_knowledge",
+            "strain_index": 0.0,
+            "compatibility": 51.6,
+            "levels_behind": 0,
+            "cognitive_dims": {
+              "logical_reasoning": 20,
+              "abstract_reasoning": 20,
+              "practical_application": 10,
+              "theoretical_knowledge": 40,
+              "quantitative_calculation": 10
+            },
+            "expected_success": 51.6
+          }
+        ],
+        "session": "2026/2027",
+        "semester": 1,
+        "total_units": 16,
+        "still_deferred": []
+      },
+      "total_units": 12,
+      "course_count": 6,
+      "helplessness": {
+        "logical_reasoning": 0.0,
+        "abstract_reasoning": 0.0,
+        "practical_application": 0.0,
+        "theoretical_knowledge": 0.0,
+        "quantitative_calculation": 0.0
+      },
+      "meets_policy": false,
+      "cognitive_load": {
+        "logical_reasoning": 2.6,
+        "abstract_reasoning": 2.7,
+        "practical_application": 3.2,
+        "theoretical_knowledge": 2.65,
+        "quantitative_calculation": 0.85
+      },
+      "failure_counts": {},
+      "strain_budgets": {
+        "logical_reasoning": 9.96,
+        "abstract_reasoning": 9.82,
+        "practical_application": 9.99,
+        "theoretical_knowledge": 9.51,
+        "quantitative_calculation": 9.61
+      },
+      "deferred_courses": []
+    },
+    "review_status": "pending_review",
+    "student_acknowledged": false,
+    "student_note": "",
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "review_notes": "",
+    "selected_courses": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ]
+  }
+},
+{
+  "model": "advisories.activity",
+  "pk": 1,
+  "fields": {
+    "student": 2,
+    "action": "Chatted with AI assistant",
+    "detail": "Asked: Why is CSC 308 a priority?...",
+    "created_at": "2026-08-06T15:03:32.576Z"
+  }
+},
+{
+  "model": "advisories.activity",
+  "pk": 2,
+  "fields": {
+    "student": 2,
+    "action": "Recommendation generated",
+    "detail": "6 courses, 12 units",
+    "created_at": "2026-08-06T15:03:57.788Z"
+  }
+},
+{
+  "model": "advisories.activity",
+  "pk": 3,
+  "fields": {
+    "student": 2,
+    "action": "Message sent",
+    "detail": "Sent to Advisor",
+    "created_at": "2026-08-06T15:04:26.839Z"
+  }
+},
+{
+  "model": "advisories.activity",
+  "pk": 4,
+  "fields": {
+    "student": 2,
+    "action": "Replied to message",
+    "detail": "Added reply to: semester",
+    "created_at": "2026-08-06T15:04:33.960Z"
+  }
+},
+{
+  "model": "advisories.activity",
+  "pk": 5,
+  "fields": {
+    "student": 2,
+    "action": "Recommendation generated",
+    "detail": "6 courses, 12 units",
+    "created_at": "2026-08-06T15:04:49.861Z"
+  }
+},
+{
+  "model": "advisories.activity",
+  "pk": 6,
+  "fields": {
+    "student": 2,
+    "action": "Result added",
+    "detail": "COS201 — A",
+    "created_at": "2026-08-06T15:05:05.532Z"
+  }
+},
+{
+  "model": "advisories.activity",
+  "pk": 7,
+  "fields": {
+    "student": 2,
+    "action": "Result added",
+    "detail": "ENT211 — E",
+    "created_at": "2026-08-06T15:05:26.266Z"
+  }
+},
+{
+  "model": "advisories.activity",
+  "pk": 8,
+  "fields": {
+    "student": 2,
+    "action": "Recommendation generated",
+    "detail": "6 courses, 12 units",
+    "created_at": "2026-08-06T15:05:49.254Z"
+  }
+},
+{
+  "model": "advisories.advisormessage",
+  "pk": 1,
+  "fields": {
+    "student": 2,
+    "recipient_type": "advisor",
+    "subject": "semester",
+    "body": "hello",
+    "reply": "",
+    "read": true,
+    "created_at": "2026-08-06T15:04:26.828Z",
+    "replied_at": null,
+    "reply_count": 1
+  }
+},
+{
+  "model": "advisories.messagereply",
+  "pk": 1,
+  "fields": {
+    "message": 1,
+    "sender_type": "student",
+    "sender_name": "Testimony Ola",
+    "content": "hiii",
+    "created_at": "2026-08-06T15:04:33.938Z"
+  }
+},
+{
+  "model": "chatbot.chatconversation",
+  "pk": 1,
+  "fields": {
+    "student": 2,
+    "created_at": "2026-08-06T15:03:31.152Z",
+    "updated_at": "2026-08-06T15:03:32.571Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 1,
+  "fields": {
+    "conversation": 1,
+    "sender_role": "student",
+    "content": "Why is CSC 308 a priority?",
+    "created_at": "2026-08-06T15:03:32.269Z"
+  }
+},
+{
+  "model": "chatbot.chatmessage",
+  "pk": 2,
+  "fields": {
+    "conversation": 1,
+    "sender_role": "system",
+    "content": "The AI service is temporarily unavailable. Please try again shortly.",
+    "created_at": "2026-08-06T15:03:32.565Z"
+  }
+}
+]

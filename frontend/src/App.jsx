@@ -13,6 +13,7 @@ import StudentChatPage from "./pages/StudentChatPage";
 import StudentMessagesPage from "./pages/StudentMessagesPage";
 import StudentTranscriptPage from "./pages/StudentTranscriptPage";
 import StudentLayout from "./components/StudentLayout";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function AppContent() {
   const location = useLocation();
@@ -71,7 +72,7 @@ function AppContent() {
           <Route path="/dashboard/student/overview" element={<StudentLayout><StudentOverviewPage /></StudentLayout>} />
           <Route path="/dashboard/student/profile" element={<StudentLayout><StudentProfilePage /></StudentLayout>} />
           <Route path="/dashboard/student/recommendations" element={<StudentLayout><StudentRecommendationsPage /></StudentLayout>} />
-          <Route path="/dashboard/student/chat" element={<StudentLayout><StudentChatPage /></StudentLayout>} />
+          <Route path="/dashboard/student/chat" element={<StudentLayout><ErrorBoundary title="Chatbot temporarily unavailable" message="The AI assistant could not be loaded right now. Your other dashboard pages are unaffected."><StudentChatPage /></ErrorBoundary></StudentLayout>} />
           <Route path="/dashboard/student/messages" element={<StudentLayout><StudentMessagesPage /></StudentLayout>} />
           <Route path="/dashboard/student/transcript" element={<StudentLayout><StudentTranscriptPage /></StudentLayout>} />
           <Route path="/dashboard/admin" element={<AdminDashboardPage />} />

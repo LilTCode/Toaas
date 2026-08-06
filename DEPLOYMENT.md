@@ -239,6 +239,7 @@ changes do not apply to existing deployments.
 
 | Symptom | Cause and fix |
 | --- | --- |
+| Build completes in under 100ms, "Deployment completed" with no files | Framework Preset is *Other* or not set. Go to Settings → General → Framework Preset and change it to **Django**. Root Directory must still be `backend`. Then redeploy. |
 | `DJANGO_SECRET_KEY must be set…` | Add it in the backend project env vars, then redeploy. |
 | `DisallowedHost` | Add the hostname to `DJANGO_ALLOWED_HOSTS`. |
 | CORS error in the browser console | `CORS_ALLOWED_ORIGINS` missing the frontend origin, has a trailing slash, or the backend was not redeployed after the change. |

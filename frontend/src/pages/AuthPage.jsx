@@ -76,13 +76,13 @@ export default function AuthPage() {
 
             {mode === "register" && !pendingOtp && (
               <>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <Input label="First name" name="first_name" value={form.first_name} onChange={change} required />
                   <Input label="Last name" name="last_name" value={form.last_name} onChange={change} required />
                 </div>
                 <Input label="Matric Number" name="username" placeholder="e.g. 125/22/1/0072" value={form.username} onChange={change} required />
                 {form.role === "student" && (
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <Select label="Programme" name="programme" value={form.programme} onChange={change} options={[["computer_science", "B.Sc. Computer Science"], ["software_engineering", "B.Sc. Software Engineering"], ["cyber_security", "B.Sc. Cyber Security"]]} />
                     <Select label="Level" name="current_level" value={form.current_level} onChange={change} options={[[100, "100 Level"], [200, "200 Level"], [300, "300 Level"], [400, "400 Level"]]} />
                   </div>

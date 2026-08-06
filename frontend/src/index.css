@@ -18,6 +18,22 @@ html {
   scroll-behavior: smooth;
 }
 
+/* The offset "brutalist" box-shadows extend past their element's box, which on
+   narrow screens pushes the document wider than the viewport and clips content
+   on the right. Clamp the horizontal axis at the root instead of chasing it
+   per-component. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Long unbroken strings (matric numbers, emails, blob URLs) otherwise force
+   their container wider than the screen. */
+body {
+  overflow-wrap: break-word;
+}
+
 body {
   margin: 0;
   min-height: 100vh;

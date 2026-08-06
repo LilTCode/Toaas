@@ -9,10 +9,22 @@ export default function StudentChatPage() {
     if (!text.trim() || loading) return;
     setMessages(m => [...m, {role:"student", text:text.trim()}]); setDraft(""); setLoading(true);
     try {
-      if (!conversationId.current) { const r = await api.post("chatbot/conversations/create/"); conversationId.current = r.data.id; }
+      if (!conversationId.current) {
+        const r = await api.post("chatbot/conversations/create/");
+        if (!r?.data?.id) throw new Error("No conversation id returned");
+        conversationId.current = r.data.id;
+      }
       const r = await api.post(`chatbot/conversations/${conversationId.current}/messages/`, { content: text.trim() });
-      setMessages(m => [...m, {role:"assistant", text: r.data.response || "I could not generate a response."}]);
-    } catch { setMessages(m => [...m, {role:"assistant", text:"The advisory service is unavailable right now."}]); }
+      setMessages(m => [...m, {role:"assistant", text: r?.data?.response || "I could not generate a response."}]);
+    } catch (err) {
+      // A failed create leaves a stale id behind, which makes every later send
+      // 404 against a conversation that does not exist.
+      if (!conversationId.current) conversationId.current = null;
+      const status = err?.response?.status;
+      setMessages(m => [...m, {role:"assistant", text:
+        status === 401 ? "Your session expired. Please sign in again."
+        : "Chatbot temporarily unavailable. Please try again in a moment."}]);
+    }
     finally { setLoading(false); }
   };
   return (

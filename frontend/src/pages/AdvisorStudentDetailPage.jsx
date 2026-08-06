@@ -148,7 +148,7 @@ export default function AdvisorStudentDetailPage() {
                     <span className={`mt-1 inline-block rounded-full border-[1.5px] border-black px-2.5 py-0.5 text-xs font-black ${programmeColor(student.programme)}`}>{student.programme_display?.replace("B.Sc. ", "") || student.programme}</span>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div className="rounded-xl border-[2px] border-black bg-[#fef9c3] p-3">
                     <p className="text-[10px] font-black uppercase text-gray-500">Level</p>
                     <p className="mt-1 text-lg font-black text-black">{student.current_level}L</p>
@@ -176,7 +176,7 @@ export default function AdvisorStudentDetailPage() {
                   <h3 className="text-sm font-black uppercase tracking-wider text-[#facc15]">Recommendation Plan</h3>
                 </div>
                 <div className="p-5 space-y-4">
-                  <div className="grid grid-cols-3 gap-2 text-center">
+                  <div className="grid grid-cols-3 gap-3 text-center">
                     <div className="rounded-xl border-[2px] border-black bg-[#fef9c3] p-2">
                       <p className="text-[10px] font-black uppercase text-gray-500">Units</p>
                       <p className="text-lg font-black text-black">{data.recommendation.rule_snapshot?.total_units || 0}</p>
