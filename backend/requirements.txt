@@ -1,8 +1,19 @@
-Django>=4.2
-pymysql>=1.1
-Pillow>=10.0
-djangorestframework>=3.15
-djangorestframework-simplejwt>=2.0
-python-dotenv>=1.0
-requests>=2.31
-certifi>=2024.0
+# Pinned to the versions verified locally. Vercel installs these during the build.
+Django==6.0.6
+djangorestframework==3.17.1
+djangorestframework-simplejwt==5.5.1
+django-cors-headers==4.9.0
+Pillow==12.3.0
+python-dotenv==1.2.2
+requests==2.34.2
+certifi==2026.6.17
+
+# Production database (Neon Postgres on Vercel).
+psycopg[binary]==3.3.4
+
+# Production media storage (Vercel Blob) - the Vercel filesystem is read-only.
+vercel_blob==0.4.2
+
+# Local development against MySQL. Harmless on Vercel; the shim in
+# backend/__init__.py is skipped when this is not importable.
+pymysql==1.1.2

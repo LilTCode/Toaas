@@ -1,3 +1,9 @@
 {
-  "buildCommand": "python manage.py migrate --noinput"
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "backend/wsgi.py": {
+      "maxDuration": 60,
+      "excludeFiles": "{**/tests.py,**/test_*.py,media/**,staticfiles/**,db.sqlite3,.venv/**}"
+    }
+  }
 }

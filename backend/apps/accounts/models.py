@@ -34,7 +34,9 @@ class User(AbstractUser):
     current_semester = models.PositiveSmallIntegerField(default=1)
     session = models.CharField(max_length=16, default="2025/2026")
     advisor = models.ForeignKey("self", blank=True, null=True, on_delete=models.SET_NULL, related_name="assigned_students", limit_choices_to={"role": "advisor"})
-    profile_photo = models.ImageField(upload_to="profile_photos/", blank=True)
+    # max_length is well above Django's default of 100 because in production
+    # the stored value is a full Vercel Blob URL, not a relative path.
+    profile_photo = models.ImageField(upload_to="profile_photos/", blank=True, max_length=500)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
