@@ -22,16 +22,74 @@ Node project instead of Python. What changed is listed at the bottom.
 
 ## Part 1 — Backend
 
-### 1.1 Create the project
+The order matters, and it is not the order you might expect. The database and
+file store can only be attached **after** the project exists, and a project only
+exists once you have clicked Deploy at least once. So the sequence is: create and
+deploy → attach storage → redeploy → migrate.
+
+Expect to deploy the backend twice. That is normal, not a sign anything went
+wrong.
+
+### 1.1 Create the project and deploy it once
 
 1. Vercel dashboard → **Add New** → **Project** → import this repository.
 2. **Root Directory**: click *Edit* and select `backend`. This is the single most
    important setting; without it Vercel looks at the repo root and finds nothing
    to run.
-3. **Framework Preset**: leave as *Other*. Vercel detects Django from
-   `requirements.txt` + `manage.py`.
-4. Do **not** deploy yet — click *Environment Variables* first, or cancel the
-   build and add them next. A build without `DJANGO_SECRET_KEY` fails on purpose.
+3. **Framework Preset**: leave it on whatever Vercel auto-detects — it should say
+   *Django* once the Root Directory is `backend`. Do **not** force it to *Other*.
+   Picking *Other* disables Python framework detection, so nothing claims
+   `wsgi.py` as a function and the build fails with `The pattern ... doesn't
+   match any Serverless Functions inside the api directory`.
+4. Expand the **Environment Variables** section on this same screen and add
+   everything in the table below. You can add them here before the first deploy,
+   or later under Settings → Environment Variables; doing it now saves a
+   redeploy. At minimum `DJANGO_SECRET_KEY` must be set or the build fails.
+5. Click **Deploy**.
+
+| Variable | Value |
+| --- | --- |
+| `DJANGO_SECRET_KEY` | a fresh 50+ char random string (see below) |
+| `DJANGO_DEBUG` | `False` |
+| `AI_API_KEY` | your OpenAI key |
+| `AI_API_URL` | `https://api.openai.com/v1/responses` |
+| `OPENAI_MODEL` | `gpt-4o-mini` |
+| `EMAIL_BACKEND` | `django.core.mail.backends.smtp.EmailBackend` |
+| `EMAIL_HOST` | `smtp.gmail.com` |
+| `EMAIL_PORT` | `587` |
+| `EMAIL_HOST_USER` | your sending address |
+| `EMAIL_HOST_PASSWORD` | Gmail **app password**, not your login password |
+| `EMAIL_USE_TLS` | `True` |
+| `DEFAULT_FROM_EMAIL` | `TO-AAS <your_address@example.com>` |
+
+**Generating the secret key.** In VS Code open **Terminal → New Terminal** (it
+starts in the project root, using the `.venv` interpreter) and run:
+
+```
+python -c "import secrets; print(secrets.token_urlsafe(64))"
+```
+
+That prints an 86-character string. Copy the whole line and paste it as the
+value of `DJANGO_SECRET_KEY` in Vercel. The command works identically in
+PowerShell and bash — it only prints text, it does not change any file, so it is
+safe to run as many times as you like. If `python` is not found, use the full
+path instead: `.venv\Scripts\python.exe -c "..."`.
+
+Never commit this value, and use a different one from your local `.env`. If it
+ever leaks, generate a new one and update it in Vercel — sessions signed with the
+old key simply stop being valid, so the only visible effect is that logged-in
+users have to sign in again.
+
+Two variables are deliberately **not** in that table:
+
+- `DATABASE_URL` and `BLOB_READ_WRITE_TOKEN` — Vercel injects these for you in
+  steps 1.2 and 1.3. Do not add them by hand.
+- `CORS_ALLOWED_ORIGINS` / `CSRF_TRUSTED_ORIGINS` — these need the frontend URL,
+  which does not exist yet. Step 3.1.
+
+This first deployment builds and goes live, but the API cannot serve real
+requests yet because there is no database behind it. That is expected. Note the
+URL, e.g. `https://toaas-backend.vercel.app`.
 
 ### 1.2 Add the database (Neon Postgres)
 
@@ -56,44 +114,25 @@ read-only and wiped between invocations.
 The presence of that token is what switches `DEFAULT_FILE_STORAGE` to
 `VercelBlobStorage`. With no token, uploads use the local filesystem as before.
 
-### 1.4 Set the environment variables
+### 1.4 Redeploy
 
-Project → **Settings** → **Environment Variables**. Apply each to *Production*,
-*Preview*, and *Development*.
+Attaching a store adds environment variables, but **existing deployments never
+pick up new variables** — they are baked in at build time. The deployment from
+step 1.1 still knows nothing about Postgres or Blob until you rebuild.
 
-| Variable | Value |
-| --- | --- |
-| `DJANGO_SECRET_KEY` | a fresh 50+ char random string (see below) |
-| `DJANGO_DEBUG` | `False` |
-| `AI_API_KEY` | your OpenAI key |
-| `AI_API_URL` | `https://api.openai.com/v1/responses` |
-| `OPENAI_MODEL` | `gpt-4o-mini` |
-| `EMAIL_BACKEND` | `django.core.mail.backends.smtp.EmailBackend` |
-| `EMAIL_HOST` | `smtp.gmail.com` |
-| `EMAIL_PORT` | `587` |
-| `EMAIL_HOST_USER` | your sending address |
-| `EMAIL_HOST_PASSWORD` | Gmail **app password**, not your login password |
-| `EMAIL_USE_TLS` | `True` |
-| `DEFAULT_FROM_EMAIL` | `TO-AAS <your_address@example.com>` |
+1. Project → **Deployments** tab.
+2. On the most recent deployment, open the **⋯** menu → **Redeploy**.
+3. Leave "Use existing Build Cache" unchecked and confirm.
 
-Generate the secret key:
+Once it finishes, the running function has `DATABASE_URL` and
+`BLOB_READ_WRITE_TOKEN`. Vercel runs `collectstatic` automatically, and
+`ALLOWED_HOSTS` / `CSRF_TRUSTED_ORIGINS` pick up the deployment hostname from
+Vercel's own `VERCEL_URL` / `VERCEL_PROJECT_PRODUCTION_URL`, so you never
+hardcode it.
 
-```bash
-python -c "import secrets; print(secrets.token_urlsafe(64))"
-```
+Any later change to an environment variable needs this same redeploy step.
 
-`DATABASE_URL` and `BLOB_READ_WRITE_TOKEN` are already there from steps 1.2/1.3.
-Leave `CORS_ALLOWED_ORIGINS` for step 3.1 — you need the frontend URL first.
-
-### 1.5 Deploy
-
-Click **Deploy**. Note the resulting URL, e.g.
-`https://toaas-backend.vercel.app`. Vercel runs `collectstatic` automatically;
-`ALLOWED_HOSTS` and `CSRF_TRUSTED_ORIGINS` pick up the deployment hostname from
-Vercel's own `VERCEL_URL` / `VERCEL_PROJECT_PRODUCTION_URL`, so you do not have
-to hardcode it.
-
-### 1.6 Run the migrations
+### 1.5 Run the migrations
 
 The database is empty at this point. Migrations are run from your machine
 against Neon rather than during the build — a failed migration mid-build would
@@ -122,11 +161,32 @@ python manage.py createsuperuser
 
 Re-run `migrate` the same way whenever you add migrations later.
 
-### 1.7 Check it
+### 1.6 Check it
 
 Visit `https://your-backend.vercel.app/admin/` and log in with the superuser you
 just created. If the CSS is missing, `collectstatic` did not run — check the
 build log. `/api/` endpoints should respond to requests.
+
+### Optional: raise the function timeout
+
+The default 60s is enough for the AI endpoints in normal use, so treat this as a
+later tuning step, not part of getting deployed.
+
+Only add a `functions` block **after** a build has succeeded, and key it on the
+entrypoint named in that build's log (`backend/wsgi.py` for this project):
+
+```json
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "backend/wsgi.py": { "maxDuration": 120 }
+  }
+}
+```
+
+If the pattern does not match the detected entrypoint exactly, the build fails
+with `doesn't match any Serverless Functions inside the api directory`. Remove
+the block to get back to a working build.
 
 ---
 
@@ -189,6 +249,8 @@ changes do not apply to existing deployments.
 | Uploads vanish after a while | `BLOB_READ_WRITE_TOKEN` missing — writes went to the ephemeral filesystem. |
 | Build installs npm packages in `backend/` | A `package.json`/`package-lock.json` reappeared under `backend/`. Remove it. |
 | 404 on a frontend route after refresh | The SPA rewrite in `frontend/vercel.json` was removed. |
+| `The pattern "backend/wsgi.py" defined in functions doesn't match any Serverless Functions inside the api directory` | Django was not detected, so the `functions` key had nothing to bind to. Set Framework Preset to the auto-detected *Django* (not *Other*), confirm Root Directory is `backend`, and remove the `functions` block from `backend/vercel.json`. |
+| Build succeeds but every route 404s | Django was not detected — the build produced no function. The log should show `Installing requirements.txt` and a `collectstatic` step; if it does not, check Root Directory and Framework Preset. |
 
 ---
 
@@ -209,9 +271,11 @@ changes do not apply to existing deployments.
   implementation over the Vercel Blob API.
 - **`backend/backend/__init__.py`** — the `pymysql` shim is now guarded, so the
   function no longer crashes when PyMySQL is absent under Postgres.
-- **`backend/vercel.json`** — dropped the `buildCommand` that was overriding
-  Vercel's automatic `collectstatic`; raised the function timeout for AI calls;
-  excluded tests and media from the bundle.
+- **`backend/vercel.json`** — reduced to just the `$schema` line. The original
+  `buildCommand` was overriding Vercel's automatic `collectstatic`, and a
+  `functions` block keyed on `backend/wsgi.py` only resolves once Django is
+  detected — see *Optional: raise the function timeout* below before re-adding
+  it. Everything else is handled by auto-detection.
 - **`backend/.python-version`** — pins Python 3.12.
 - **`apps/accounts/models.py`** — `profile_photo` widened to 500 chars, since
   Blob returns a full URL rather than a relative path. Migration `0005` included.
