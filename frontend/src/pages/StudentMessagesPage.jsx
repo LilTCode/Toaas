@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import api from "../services/api";
+import usePolling from "../hooks/usePolling";
 
 export default function StudentMessagesPage() {
   const [messages, setMessages] = useState([]);
@@ -17,10 +18,23 @@ export default function StudentMessagesPage() {
     try {
       const r = await api.get("advisories/messages/");
       setMessages(r.data);
-    } catch { /* ignore */ }
+      return r.data;
+    } catch { return null; }
   };
 
   useEffect(() => { load(); }, []);
+
+  // Pull new advisor replies into the open thread without a manual refresh.
+  usePolling(async () => {
+    const fresh = await load();
+    if (!fresh || !selected) return;
+    const thread = fresh.find((m) => m.id === selected.id);
+    if (!thread) return;
+    setSelected(thread);
+    setReplies((prev) =>
+      (thread.replies?.length ?? 0) === prev.length ? prev : thread.replies || []
+    );
+  }, 5000);
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: "smooth" }); }, [replies, selected]);
 
   const selectMessage = async (msg) => {
@@ -36,9 +50,17 @@ export default function StudentMessagesPage() {
     setSending(true);
     try {
       const r = await api.post("advisories/messages/", { recipient_type: recipient, subject, body: draft });
-      setMessages((prev) => [r.data, ...prev]);
+      // The server may have appended to an existing thread rather than created
+      // one, so replace a matching entry instead of prepending a duplicate.
+      setMessages((prev) => {
+        const rest = prev.filter((m) => m.id !== r.data.id);
+        return [r.data, ...rest];
+      });
       setDraft("");
       setSubject("");
+      // Open the conversation so the student can see their message land.
+      setSelected(r.data);
+      setReplies(r.data.replies || []);
     } finally { setSending(false); }
   };
 
@@ -106,27 +128,18 @@ export default function StudentMessagesPage() {
 
             {/* Messages */}
             <div className="flex-1 space-y-4 overflow-y-auto bg-[#f3f1e8] p-6">
-              {/* Original message - sent by student */}
-              <div className="flex justify-end">
-                <div className="max-w-[75%] rounded-2xl border-[2px] border-black bg-[#ca8a04] px-5 py-3 text-sm font-bold text-black shadow-[4px_4px_0_0_#000]">
-                  <p className="text-[10px] font-black uppercase tracking-wider text-black/60">You</p>
-                  <p className="mt-1">{selected.body}</p>
-                </div>
-              </div>
-
-              {/* Staff reply (if any on the old reply field) */}
-              {selected.reply && (
-                <div className="flex justify-start">
-                  <div className="max-w-[75%] rounded-2xl border-[2px] border-black bg-white px-5 py-3 text-sm font-bold text-black shadow-[4px_4px_0_0_#000]">
-                    <p className="text-[10px] font-black uppercase tracking-wider text-gray-400">
-                      {selected.recipient_type === "advisor" ? "Advisor" : "Admin"}
-                    </p>
-                    <p className="mt-1">{selected.reply}</p>
+              {/* Opening message — absent on threads an advisor started */}
+              {selected.body && (
+                <div className="flex justify-end">
+                  <div className="max-w-[75%] rounded-2xl border-[2px] border-black bg-[#ca8a04] px-5 py-3 text-sm font-bold text-black shadow-[4px_4px_0_0_#000]">
+                    <p className="text-[10px] font-black uppercase tracking-wider text-black/60">You</p>
+                    <p className="mt-1">{selected.body}</p>
                   </div>
                 </div>
               )}
 
-              {/* Threaded replies */}
+              {/* Threaded replies — `reply` is a denormalised copy of the last
+                  staff reply and is intentionally not rendered here. */}
               {replies.map((r) => (
                 <div key={r.id} className={`flex ${r.sender_type === "student" ? "justify-end" : "justify-start"}`}>
                   <div className={`max-w-[75%] rounded-2xl border-[2px] border-black px-5 py-3 text-sm font-bold shadow-[4px_4px_0_0_#000] ${r.sender_type === "student" ? "bg-[#ca8a04] text-black" : "bg-white text-black"}`}>

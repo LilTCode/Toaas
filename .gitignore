@@ -10,6 +10,11 @@ db.sqlite3
 staticfiles/
 media/
 
+# Database dumps — contain real user data, keep out of version control
+*_backup*.json
+neon_backup.json
+transfer.json
+
 # Vercel
 .vercel/
 

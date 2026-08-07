@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
+import usePolling from "../hooks/usePolling";
 
 const COGNITIVE_DIMS = [
   "abstract_reasoning", "logical_reasoning", "theoretical_knowledge",
@@ -54,7 +55,11 @@ export default function AdvisorDashboardPage() {
     try { const r = await api.get("advisories/students/"); setStudents(r.data); } catch { /* ignore */ }
   };
   const loadMessages = async () => {
-    try { const r = await api.get("advisories/staff/messages/"); setMessages(r.data); } catch { /* ignore */ }
+    try {
+      const r = await api.get("advisories/staff/messages/");
+      setMessages(r.data);
+      return r.data;
+    } catch { return null; }
   };
   const loadAdminMessages = async () => {
     try { const r = await api.get("advisories/staff/my-messages/"); setAdminMessages(r.data); } catch { /* ignore */ }
@@ -67,6 +72,19 @@ export default function AdvisorDashboardPage() {
   }, []);
 
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: "smooth" }); }, [replies]);
+
+  // Pull new student replies into the open thread without a manual refresh.
+  usePolling(async () => {
+    const fresh = await loadMessages();
+    loadAdminMessages();
+    if (!fresh || !selected) return;
+    const thread = fresh.find((m) => m.id === selected.id);
+    if (!thread) return;
+    setSelected(thread);
+    setReplies((prev) =>
+      (thread.replies?.length ?? 0) === prev.length ? prev : thread.replies || []
+    );
+  }, 5000);
 
   const selectMessage = (msg) => { setSelected(msg); setReplies(msg.replies || []); setReplyText(""); };
   const sendReply = async () => {

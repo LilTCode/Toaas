@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../services/api";
+import api, { clearSession } from "../services/api";
 
 function parseError(error) {
   const d = error.response?.data;
@@ -22,11 +22,16 @@ export default function AuthPage() {
   const [pendingOtp, setPendingOtp] = useState(false);
   const [msg, setMsg] = useState("");
 
+  // Reaching the auth screen means the previous session is over. Drop any
+  // leftover token so a device that arrives holding an expired one starts clean.
+  useEffect(() => { clearSession(); }, []);
+
   const change = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const doLogin = async (email, password) => {
     const r = await api.post("accounts/login/", { email, password });
     localStorage.setItem("toaas_access_token", r.data.access);
+    if (r.data.refresh) localStorage.setItem("toaas_refresh_token", r.data.refresh);
     localStorage.setItem("toaas_user", JSON.stringify(r.data.user));
     const role = r.data.user?.role;
     if (role === "administrator") navigate("/dashboard/admin");

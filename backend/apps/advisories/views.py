@@ -177,15 +177,21 @@ class ActivityListView(generics.ListAPIView):
 # ──────────────────────────────────────────────
 
 class StaffSendMessageView(APIView):
-    """Staff (advisor/admin) send a new message to a student."""
+    """Staff (advisor/admin) send a message to a student.
+
+    The message is appended to the student's existing thread as a staff-authored
+    reply, so both sides see one continuous conversation attributed to the staff
+    member. `AdvisorMessage.body` is the student's opening message and is never
+    written here — doing so would render the advisor's words as the student's.
+    """
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
-        if request.user.role not in ("advisor", "administrator"):
+        user = request.user
+        if user.role not in ("advisor", "administrator"):
             return Response({"detail": "Not authorised"}, status=status.HTTP_403_FORBIDDEN)
 
         student_id = request.data.get("student_id")
-        subject = request.data.get("subject", "Advisor message")
         body = request.data.get("body", "").strip()
 
         if not student_id or not body:
@@ -196,16 +202,37 @@ class StaffSendMessageView(APIView):
         except User.DoesNotExist:
             return Response({"detail": "Student not found."}, status=status.HTTP_404_NOT_FOUND)
 
-        msg = AdvisorMessage.objects.create(
-            student=student,
-            recipient_type="advisor" if request.user.role == "advisor" else "administrator",
-            subject=subject,
-            body=body,
+        recipient_type = "advisor" if user.role == "advisor" else "administrator"
+        thread = AdvisorMessage.objects.filter(
+            student=student, recipient_type=recipient_type
+        ).order_by("-created_at").first()
+
+        if thread is None:
+            thread = AdvisorMessage.objects.create(
+                student=student,
+                recipient_type=recipient_type,
+                subject=request.data.get("subject", "Advisor message"),
+                body="",
+            )
+
+        staff_name = f"{user.get_full_name() or user.email} ({'Advisor' if user.role == 'advisor' else 'Admin'})"
+        reply = MessageReply.objects.create(
+            message=thread,
+            sender_type="staff",
+            sender_name=staff_name,
+            content=body,
         )
-        return Response({
-            "id": msg.id,
-            "detail": "Message sent to student."
-        }, status=status.HTTP_201_CREATED)
+
+        thread.reply = body
+        thread.reply_count = thread.replies.count()
+        thread.replied_at = reply.created_at
+        thread.save(update_fields=["reply", "reply_count", "replied_at"])
+
+        log_activity(student, "Message received", f"From {staff_name}")
+        return Response(
+            {"thread_id": thread.id, **MessageReplySerializer(reply).data},
+            status=status.HTTP_201_CREATED,
+        )
 
 
 class StaffMyMessagesView(APIView):
@@ -336,15 +363,42 @@ class StaffMessageReplyView(APIView):
 # ──────────────────────────────────────────────
 
 class AdvisorMessageListCreateView(generics.ListCreateAPIView):
+    """Student message threads — one continuous conversation per recipient.
+
+    Writing to the same recipient again appends to the existing thread instead
+    of opening a new one, so both sides read a single conversation rather than a
+    pile of one-message threads.
+    """
     serializer_class = AdvisorMessageSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return AdvisorMessage.objects.filter(student=self.request.user)
 
-    def perform_create(self, serializer):
-        message = serializer.save(student=self.request.user)
-        log_activity(self.request.user, "Message sent", f"Sent to {message.get_recipient_type_display()}")
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        recipient_type = serializer.validated_data["recipient_type"]
+
+        thread = AdvisorMessage.objects.filter(
+            student=request.user, recipient_type=recipient_type
+        ).order_by("-created_at").first()
+
+        if thread is None:
+            thread = serializer.save(student=request.user)
+        else:
+            MessageReply.objects.create(
+                message=thread,
+                sender_type="student",
+                sender_name=request.user.get_full_name() or request.user.email,
+                content=serializer.validated_data["body"],
+            )
+            thread.reply_count = thread.replies.count()
+            thread.read = False
+            thread.save(update_fields=["reply_count", "read"])
+
+        log_activity(request.user, "Message sent", f"Sent to {thread.get_recipient_type_display()}")
+        return Response(self.get_serializer(thread).data, status=status.HTTP_201_CREATED)
 
 
 class AdvisorMessageReplyView(APIView):

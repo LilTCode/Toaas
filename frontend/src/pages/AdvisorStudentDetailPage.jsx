@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../services/api";
+import usePolling from "../hooks/usePolling";
 
 const COGNITIVE_DIMS = [
   "abstract_reasoning", "logical_reasoning", "theoretical_knowledge",
@@ -90,6 +91,14 @@ export default function AdvisorStudentDetailPage() {
   }, [studentId]);
 
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: "smooth" }); }, [activeTab, data?.chat_history, data?.advisor_messages]);
+
+  // Pull the student's replies in without a manual refresh.
+  usePolling(async () => {
+    try {
+      const r = await api.get(`advisories/students/${studentId}/`);
+      setData(r.data);
+    } catch { /* ignore */ }
+  }, 5000);
 
   const sendMessage = async () => {
     if (!replyText.trim()) return; setSending(true);
