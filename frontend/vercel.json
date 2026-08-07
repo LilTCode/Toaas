@@ -2,7 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
-      "source": "/((?!assets/).*)",
+      "source": "/api/:path*",
+      "destination": "https://toaas5-omega.vercel.app/api/:path*"
+    },
+    {
+      "source": "/((?!api/|assets/).*)",
       "destination": "/index.html"
     }
   ]
